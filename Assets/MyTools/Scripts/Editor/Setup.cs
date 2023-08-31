@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 
@@ -10,59 +9,28 @@ namespace MyTools
 {
     public static class Setup
     {
-        public static void CreateDefaultFolders()
+        public static void CreateDefaultFolders(string[] folders)
         {
-            Folders.CreateDefault(
-            "_Project",
-            "Animation/Animators",
-            "Animation/Clips",
-            "Art/Fonts",
-            "Art/Models",
-            "Art/Materials",
-            "Art/Sprites",
-            "Art/Textures",
-            "Prefabs",
-            "Scenes",
-            "Scripts/UI",
-            "ScriptableObjects",
-            "Settings"
-            );
-
+            Folders.CreateDefault("_Project", folders);
             AssetDatabase.Refresh();
         }
 
-        public static void ImportFavouriteAssets()
+        public static void ImportAssetStoreAssets(string rootFolder, string[] assets)
         {
-            // Asset store assets
-            Assets.ImportAssetFromAssetStore("DOTween HOTween v2.unitypackage", "Demigiant/Editor ExtensionsAnimation");
-            Assets.ImportAssetFromAssetStore("Cartoon FX Remaster Free.unitypackage", "Jean Moreno/Particle Systems");
-            Assets.ImportAssetFromAssetStore("FREE Casual Game SFX Pack.unitypackage", "Dustyroom/AudioSound FX");
-            Assets.ImportAssetFromAssetStore("Selection History.unitypackage", "Staggart Creations/Editor ExtensionsUtilities");
-
-            // Local drive assets
-            Assets.ImportAssetFromLocalDrive("Play Mode Save v3.9.1.unitypackage", "");
-            Assets.ImportAssetFromLocalDrive("Shapes v4.2.1.unitypackage", "");
-            Assets.ImportAssetFromLocalDrive("Cartoon FX Remaster R 1.2.5.unitypackage", "Particle Systems/CartoomFX");
-            Assets.ImportAssetFromLocalDrive("Cartoon FX 2 Remaster R 1.2.0.unitypackage", "Particle Systems/CartoomFX");
+            foreach (string asset in assets) Assets.ImportAsset(rootFolder, asset);
         }
 
-        public static void InstallFavouritePackages()
+        public static void ImportLocalDriveAssets(string rootFolder, string[] assets)
         {
-            Packages.InstallPackages(new[]{
-                "com.unity.2d.sprite",
-                "com.unity.cinemachine",
-                "com.unity.inputsystem",
-                "com.unity.probuilder",
-                "com.unity.recorder",
-                "com.unity.splines",
-                "git+com.unity.nuget.newtonsoft-json",
-                "git+https://github.com/KyleBanks/scene-ref-attribute",
-            });
+            foreach (string asset in assets) Assets.ImportAsset(rootFolder, asset);
         }
+
+        public static void InstallUnityPackages(string[] packages) => Packages.InstallPackages(packages);
+        public static void InstallOpenSources(string[] openSources) => Packages.InstallPackages(openSources);
 
         private static class Folders
         {
-            public static void CreateDefault(string root, params string[] folders)
+            public static void CreateDefault(string root, string[] folders)
             {
                 var fullpath = Path.Combine(Application.dataPath, root);
                 if (!Directory.Exists(fullpath))
@@ -92,16 +60,9 @@ namespace MyTools
 
         private static class Assets
         {
-            public static void ImportAssetFromAssetStore(string asset, string subfolder,
-                string rootFolder = "C:/Users/Pranta/AppData/Roaming/Unity/Asset Store-5.x")
+            public static void ImportAsset(string rootFolder, string asset)
             {
-                AssetDatabase.ImportPackage(Path.Combine(rootFolder, subfolder, asset), false);
-            }
-
-            public static void ImportAssetFromLocalDrive(string asset, string subfolder,
-                string rootFolder = "E:/Study/Programming/Unity/Resource Files/Packages")
-            {
-                AssetDatabase.ImportPackage(Path.Combine(rootFolder, subfolder, asset), false);
+                AssetDatabase.ImportPackage(Path.Combine(rootFolder, asset), false);
             }
         }
 
@@ -112,6 +73,8 @@ namespace MyTools
 
             public static void InstallPackages(string[] packages)
             {
+                Debug.Log("Installing ... ...");
+
                 foreach (var package in packages)
                 {
                     PackagesToInstall.Enqueue(package);
@@ -125,7 +88,7 @@ namespace MyTools
                 }
             }
 
-            private static async void Progress()
+            private static void Progress()
             {
                 if (Request.IsCompleted)
                 {
@@ -143,10 +106,12 @@ namespace MyTools
                     // If there are more packages to install, start the next one
                     if (PackagesToInstall.Count > 0)
                     {
-                        // Add delay before next package install
-                        await Task.Delay(1000);
                         Request = Client.Add(PackagesToInstall.Dequeue());
                         EditorApplication.update += Progress;
+                    }
+                    else
+                    {
+                        Debug.Log("All packages installed");
                     }
                 }
             }
