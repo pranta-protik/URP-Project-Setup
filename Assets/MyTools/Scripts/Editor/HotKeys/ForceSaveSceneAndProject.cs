@@ -6,7 +6,7 @@ namespace MyTools
     public class ForceSaveSceneAndProject
     {
         [MenuItem("File/Save Scene And Project %#&s")]
-        private static void FunctionForceSaveSceneAndProject()
+        public static void FunctionForceSaveSceneAndProject()
         {
             EditorApplication.ExecuteMenuItem("File/Save");
             EditorApplication.ExecuteMenuItem("File/Save Project");

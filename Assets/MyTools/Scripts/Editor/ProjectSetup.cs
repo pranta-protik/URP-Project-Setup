@@ -106,7 +106,6 @@ namespace MyTools
                     var createdScene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
                     EditorSceneManager.SaveScene(createdScene, fullpath + "/" + scene + ".unity", true);
 
-                    if (scene == "UI") continue;
                     buildSettingsScenesList.Add(new EditorBuildSettingsScene("Assets/" + root + "/" + scene + ".unity", true));
                 }
 

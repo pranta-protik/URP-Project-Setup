@@ -141,15 +141,7 @@ namespace MyTools
             {
                 foreach (var defaultSceneName in defaultScenesListFileData)
                 {
-                    if (defaultSceneName == "UI")
-                    {
-                        defaultScenesNameStr += defaultSceneName + " (Will not get added to editor build settings!)" + "\n";
-                    }
-                    else
-                    {
-                        defaultScenesNameStr += defaultSceneName + "\n";
-                    }
-
+                    defaultScenesNameStr += defaultSceneName + "\n";
                 }
             }
 
