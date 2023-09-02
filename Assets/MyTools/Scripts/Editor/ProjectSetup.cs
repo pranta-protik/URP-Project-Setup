@@ -16,18 +16,6 @@ namespace MyTools
             AssetDatabase.Refresh();
         }
 
-        public static void ImportAssetStoreAssets(string rootFolder, string[] assets)
-        {
-            foreach (string asset in assets) Assets.ImportAsset(rootFolder, asset);
-        }
-
-        public static void ImportLocalDriveAssets(string rootFolder, string[] assets)
-        {
-            foreach (string asset in assets) Assets.ImportAsset(rootFolder, asset);
-        }
-
-        public static void InstallUnityPackages(string[] packages) => Packages.InstallPackages(packages);
-        public static void InstallOpenSources(string[] openSources) => Packages.InstallPackages(openSources);
         public static void CreateDefaultScenes(string[] scenes)
         {
             var rootPath = "_Project/Scenes";
@@ -41,31 +29,18 @@ namespace MyTools
             GUIUtility.ExitGUI();
         }
 
-        private static class Scenes
+        public static void ImportAssetStoreAssets(string rootFolder, string[] assets)
         {
-            public static EditorBuildSettingsScene[] CreateDefault(string root, string[] scenes)
-            {
-                var fullpath = Path.Combine(Application.dataPath, root);
-
-                if (!Directory.Exists(fullpath))
-                {
-                    Directory.CreateDirectory(fullpath);
-                }
-
-                List<EditorBuildSettingsScene> buildSettingsScenesList = new List<EditorBuildSettingsScene>();
-
-                foreach (var scene in scenes)
-                {
-                    var createdScene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
-                    EditorSceneManager.SaveScene(createdScene, fullpath + "/" + scene + ".unity", true);
-
-                    if (scene == "UI") continue;
-                    buildSettingsScenesList.Add(new EditorBuildSettingsScene("Assets/" + root + "/" + scene + ".unity", true));
-                }
-
-                return buildSettingsScenesList.ToArray();
-            }
+            foreach (string asset in assets) Assets.ImportAsset(rootFolder, asset);
         }
+
+        public static void ImportLocalDriveAssets(string rootFolder, string[] assets)
+        {
+            foreach (string asset in assets) Assets.ImportAsset(rootFolder, asset);
+        }
+
+        public static void InstallUnityPackages(string[] packages) => Packages.InstallPackages(packages);
+        public static void InstallOpenSources(string[] openSources) => Packages.InstallPackages(openSources);
 
         private static class Folders
         {
@@ -98,6 +73,44 @@ namespace MyTools
                         Directory.CreateDirectory(currentPath);
                     }
                 }
+
+                currentPath = rootPath;
+
+                foreach (var folder in folders)
+                {
+                    currentPath = Path.Combine(currentPath, folder);
+
+                    if (Directory.Exists(currentPath) && Directory.GetDirectories(currentPath).Length <= 0)
+                    {
+                        File.WriteAllText(currentPath + "/" + folder + ".keep", "");
+                    }
+                }
+            }
+        }
+
+        private static class Scenes
+        {
+            public static EditorBuildSettingsScene[] CreateDefault(string root, string[] scenes)
+            {
+                var fullpath = Path.Combine(Application.dataPath, root);
+
+                if (!Directory.Exists(fullpath))
+                {
+                    Directory.CreateDirectory(fullpath);
+                }
+
+                List<EditorBuildSettingsScene> buildSettingsScenesList = new List<EditorBuildSettingsScene>();
+
+                foreach (var scene in scenes)
+                {
+                    var createdScene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+                    EditorSceneManager.SaveScene(createdScene, fullpath + "/" + scene + ".unity", true);
+
+                    if (scene == "UI") continue;
+                    buildSettingsScenesList.Add(new EditorBuildSettingsScene("Assets/" + root + "/" + scene + ".unity", true));
+                }
+
+                return buildSettingsScenesList.ToArray();
             }
         }
 
