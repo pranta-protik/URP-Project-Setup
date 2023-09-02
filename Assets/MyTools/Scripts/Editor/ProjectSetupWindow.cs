@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MyTools
 {
-    public class SetupWindow : EditorWindow
+    public class ProjectSetupWindow : EditorWindow
     {
         private const string WINDOW_TITLE = "Project Setup";
         private const float WINDOW_WIDTH = 500f;
@@ -16,7 +16,7 @@ namespace MyTools
         private const float SCROLL_VIEW_WIDTH = 500f;
         private const float SCROLL_VIEW_HEIGHT = 65f;
         private const float VERTICAL_SPACE = 10;
-        private static SetupWindow _setupWindow;
+        private static ProjectSetupWindow _projectSetupWindow;
         private static GUIStyle _titleLabelStyle;
         private static Vector2 _scrollPosForDefaultFolders;
         private static Vector2 _scrollPosForDefaultScenes;
@@ -65,7 +65,7 @@ namespace MyTools
 
             EditorGUILayout.EndVertical();
 
-            if (_setupWindow) _setupWindow.Repaint();
+            if (_projectSetupWindow) _projectSetupWindow.Repaint();
         }
 
         private static void CreateDefaultFolders()
@@ -101,7 +101,7 @@ namespace MyTools
             {
                 if (defaultFoldersListFileData != null)
                 {
-                    Setup.CreateDefaultFolders(defaultFoldersListFileData);
+                    ProjectSetup.CreateDefaultFolders(defaultFoldersListFileData);
                 }
             }
 
@@ -165,7 +165,7 @@ namespace MyTools
             {
                 if (defaultScenesListFileData != null)
                 {
-                    Setup.CreateDefaultScenes(defaultScenesListFileData);
+                    ProjectSetup.CreateDefaultScenes(defaultScenesListFileData);
                 }
             }
 
@@ -220,7 +220,7 @@ namespace MyTools
             {
                 if (unityPackageListFileData != null)
                 {
-                    Setup.InstallUnityPackages(unityPackageListFileData);
+                    ProjectSetup.InstallUnityPackages(unityPackageListFileData);
                 }
             }
 
@@ -274,7 +274,7 @@ namespace MyTools
             {
                 if (openSourcesListFileData != null)
                 {
-                    Setup.InstallOpenSources(openSourcesListFileData);
+                    ProjectSetup.InstallOpenSources(openSourcesListFileData);
                 }
             }
 
@@ -353,7 +353,7 @@ namespace MyTools
             {
                 if (assetStoreAssetsListFileData != null)
                 {
-                    Setup.ImportAssetStoreAssets(assetStoreAssetsRootStr, assetStoreAssetsListFileData);
+                    ProjectSetup.ImportAssetStoreAssets(assetStoreAssetsRootStr, assetStoreAssetsListFileData);
                 }
             }
 
@@ -432,7 +432,7 @@ namespace MyTools
             {
                 if (localDriveAssetsListFileData != null)
                 {
-                    Setup.ImportAssetStoreAssets(localDriveAssetsRootStr, localDriveAssetsListFileData);
+                    ProjectSetup.ImportAssetStoreAssets(localDriveAssetsRootStr, localDriveAssetsListFileData);
                 }
             }
 
@@ -500,9 +500,9 @@ namespace MyTools
 
         public static void InitWindow()
         {
-            _setupWindow = GetWindow<SetupWindow>(true, WINDOW_TITLE, true);
-            _setupWindow.minSize = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-            _setupWindow.Show();
+            _projectSetupWindow = GetWindow<ProjectSetupWindow>(true, WINDOW_TITLE, true);
+            _projectSetupWindow.minSize = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
+            _projectSetupWindow.Show();
         }
     }
 }

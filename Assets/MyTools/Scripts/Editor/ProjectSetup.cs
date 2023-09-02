@@ -8,7 +8,7 @@ using UnityEditor.SceneManagement;
 
 namespace MyTools
 {
-    public static class Setup
+    public static class ProjectSetup
     {
         public static void CreateDefaultFolders(string[] folders)
         {
