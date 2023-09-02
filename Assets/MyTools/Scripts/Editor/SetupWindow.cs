@@ -10,7 +10,7 @@ namespace MyTools
     {
         private const string WINDOW_TITLE = "Project Setup";
         private const float WINDOW_WIDTH = 500f;
-        private const float WINDOW_HEIGHT = 750f;
+        private const float WINDOW_HEIGHT = 880f;
         private const float BUTTON_WIDTH = 100f;
         private const float BUTTON_HEIGHT = 32f;
         private const float SCROLL_VIEW_WIDTH = 500f;
@@ -19,6 +19,7 @@ namespace MyTools
         private static SetupWindow _setupWindow;
         private static GUIStyle _titleLabelStyle;
         private static Vector2 _scrollPosForDefaultFolders;
+        private static Vector2 _scrollPosForDefaultScenes;
         private static Vector2 _scrollPosForUnityPackages;
         private static Vector2 _scrollPosForOpenSources;
         private static Vector2 _scrollPosForAssetStoreAssets;
@@ -41,6 +42,10 @@ namespace MyTools
             EditorGUILayout.Space(VERTICAL_SPACE);
 
             CreateDefaultFolders();
+
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
+            CreateDefaultScenes();
 
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
@@ -103,6 +108,70 @@ namespace MyTools
             if (GUILayout.Button("Edit", GUILayout.Width(BUTTON_WIDTH), GUILayout.Height(BUTTON_HEIGHT)))
             {
                 var path = Application.dataPath + "/MyTools/PresetData/DefaultFoldersList.txt";
+
+                try
+                {
+                    System.Diagnostics.Process.Start(path);
+                }
+                catch
+                {
+                    Debug.LogError(path + " not found!");
+                }
+            }
+
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.EndVertical();
+        }
+
+        private static void CreateDefaultScenes()
+        {
+            EditorGUILayout.BeginVertical();
+
+            GUILayout.Label("Create Default Scenes", _titleLabelStyle);
+
+            _scrollPosForDefaultScenes = EditorGUILayout.BeginScrollView(_scrollPosForDefaultScenes, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
+
+            EditorGUI.BeginDisabledGroup(true);
+
+            var defaultScenesListFileData = ReadFromFile("Assets/MyTools/PresetData/DefaultScenesList.txt");
+            var defaultScenesNameStr = "";
+
+            if (defaultScenesListFileData != null)
+            {
+                foreach (var defaultSceneName in defaultScenesListFileData)
+                {
+                    if (defaultSceneName == "UI")
+                    {
+                        defaultScenesNameStr += defaultSceneName + " (Will not get added to editor build settings!)" + "\n";
+                    }
+                    else
+                    {
+                        defaultScenesNameStr += defaultSceneName + "\n";
+                    }
+
+                }
+            }
+
+            EditorGUILayout.TextArea(defaultScenesNameStr.TrimEnd(), GUILayout.ExpandHeight(true));
+            EditorGUI.EndDisabledGroup();
+
+            EditorGUILayout.EndScrollView();
+
+
+            EditorGUILayout.BeginHorizontal();
+
+            if (GUILayout.Button("Create", GUILayout.ExpandWidth(true), GUILayout.Height(BUTTON_HEIGHT)))
+            {
+                if (defaultScenesListFileData != null)
+                {
+                    Setup.CreateDefaultScenes(defaultScenesListFileData);
+                }
+            }
+
+            if (GUILayout.Button("Edit", GUILayout.Width(BUTTON_WIDTH), GUILayout.Height(BUTTON_HEIGHT)))
+            {
+                var path = Application.dataPath + "/MyTools/PresetData/DefaultScenesList.txt";
 
                 try
                 {

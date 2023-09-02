@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
+using UnityEditor.SceneManagement;
 
 namespace MyTools
 {
@@ -27,16 +28,56 @@ namespace MyTools
 
         public static void InstallUnityPackages(string[] packages) => Packages.InstallPackages(packages);
         public static void InstallOpenSources(string[] openSources) => Packages.InstallPackages(openSources);
+        public static void CreateDefaultScenes(string[] scenes)
+        {
+            var rootPath = "_Project/Scenes";
+            EditorBuildSettings.scenes = Scenes.CreateDefault(rootPath, scenes);
+
+            DebugUtils.Log("Scenes added to editor build settings!");
+
+            EditorSceneManager.OpenScene("Assets/" + rootPath + "/" + scenes[0] + ".unity");
+
+            AssetDatabase.Refresh();
+            GUIUtility.ExitGUI();
+        }
+
+        private static class Scenes
+        {
+            public static EditorBuildSettingsScene[] CreateDefault(string root, string[] scenes)
+            {
+                var fullpath = Path.Combine(Application.dataPath, root);
+
+                if (!Directory.Exists(fullpath))
+                {
+                    Directory.CreateDirectory(fullpath);
+                }
+
+                List<EditorBuildSettingsScene> buildSettingsScenesList = new List<EditorBuildSettingsScene>();
+
+                foreach (var scene in scenes)
+                {
+                    var createdScene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+                    EditorSceneManager.SaveScene(createdScene, fullpath + "/" + scene + ".unity", true);
+
+                    if (scene == "UI") continue;
+                    buildSettingsScenesList.Add(new EditorBuildSettingsScene("Assets/" + root + "/" + scene + ".unity", true));
+                }
+
+                return buildSettingsScenesList.ToArray();
+            }
+        }
 
         private static class Folders
         {
             public static void CreateDefault(string root, string[] folders)
             {
                 var fullpath = Path.Combine(Application.dataPath, root);
+
                 if (!Directory.Exists(fullpath))
                 {
                     Directory.CreateDirectory(fullpath);
                 }
+
                 foreach (var folder in folders)
                 {
                     CreateSubFolders(fullpath, folder);
@@ -47,9 +88,11 @@ namespace MyTools
             {
                 var folders = folderHierarchy.Split('/');
                 var currentPath = rootPath;
+
                 foreach (var folder in folders)
                 {
                     currentPath = Path.Combine(currentPath, folder);
+
                     if (!Directory.Exists(currentPath))
                     {
                         Directory.CreateDirectory(currentPath);
@@ -73,7 +116,7 @@ namespace MyTools
 
             public static void InstallPackages(string[] packages)
             {
-                Debug.Log("Installing ... ...");
+                DebugUtils.Log("Installing ... ...");
 
                 foreach (var package in packages)
                 {
@@ -94,11 +137,11 @@ namespace MyTools
                 {
                     if (Request.Status == StatusCode.Success)
                     {
-                        Debug.Log("Installed: " + Request.Result.packageId);
+                        DebugUtils.Log("Installed: " + Request.Result.packageId);
                     }
                     else if (Request.Status >= StatusCode.Failure)
                     {
-                        Debug.Log(Request.Error.message);
+                        DebugUtils.LogError(Request.Error.message);
                     }
 
                     EditorApplication.update -= Progress;
@@ -111,7 +154,7 @@ namespace MyTools
                     }
                     else
                     {
-                        Debug.Log("All packages installed");
+                        DebugUtils.Log("All packages installed");
                     }
                 }
             }
