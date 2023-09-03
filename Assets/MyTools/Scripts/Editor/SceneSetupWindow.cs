@@ -37,6 +37,10 @@ namespace MyTools
 
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
+            SetupUIScene();
+
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
             EditorGUILayout.EndVertical();
 
             if (_sceneSetupWindow) _sceneSetupWindow.Repaint();
@@ -74,6 +78,27 @@ namespace MyTools
             if (GUILayout.Button("Setup Scene", GUILayout.ExpandWidth(true), GUILayout.Height(BUTTON_HEIGHT)))
             {
                 SceneSetup.SetupSplashScene(relativePath);
+            }
+
+            if (GUILayout.Button("Open Scene", GUILayout.ExpandWidth(true), GUILayout.Height(BUTTON_HEIGHT)))
+            {
+                SceneSetup.TryOpenScene(relativePath);
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+
+        private static void SetupUIScene()
+        {
+            GUILayout.Label("Setup UI Scene", _titleLabelStyle);
+
+            EditorGUILayout.BeginHorizontal();
+
+            var relativePath = "_Project/Scenes/UI.unity";
+
+            if (GUILayout.Button("Setup Scene", GUILayout.ExpandWidth(true), GUILayout.Height(BUTTON_HEIGHT)))
+            {
+                SceneSetup.SetupUIScene(relativePath);
             }
 
             if (GUILayout.Button("Open Scene", GUILayout.ExpandWidth(true), GUILayout.Height(BUTTON_HEIGHT)))

@@ -55,32 +55,53 @@ namespace MyTools
         {
             if (TryOpenScene(relativePath))
             {
+                var prefabPath = "Assets/SampleSceneAssets/Prefabs/UI/SplashUI.prefab";
+
                 if (Object.FindObjectsOfType<GameObject>().Length <= 0)
                 {
-                    SetupAndSaveSplashScene();
+                    SetupAndSaveUsingPrefab(prefabPath, "SplashUI");
                     return;
                 }
 
                 if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Are you sure you want to setup splash scene?\nAll existing data will be erased!"))
                 {
-                    SetupAndSaveSplashScene();
+                    SetupAndSaveUsingPrefab(prefabPath, "SplashUI");
                 }
             }
         }
 
-        private static void SetupAndSaveSplashScene()
+        public static void SetupUIScene(string relativePath)
         {
-            var splashUIGO = AssetDatabase.LoadAssetAtPath("Assets/SampleSceneAssets/Prefabs/UI/SplashUI.prefab", typeof(GameObject)) as GameObject;
-
-            if (!splashUIGO)
+            if (TryOpenScene(relativePath))
             {
-                EditorUtils.DisplayDialogBox("Error", $"Unable to find the SplashUI prefab!");
+                var prefabPath = "Assets/SampleSceneAssets/Prefabs/UI/LevelUI.prefab";
+
+                if (Object.FindObjectsOfType<GameObject>().Length <= 0)
+                {
+                    SetupAndSaveUsingPrefab(prefabPath, "LevelUI");
+                    return;
+                }
+
+                if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Are you sure you want to setup UI scene?\nAll existing data will be erased!"))
+                {
+                    SetupAndSaveUsingPrefab(prefabPath, "LevelUI");
+                }
+            }
+        }
+
+        private static void SetupAndSaveUsingPrefab(string prefabPath, string prefabName)
+        {
+            var levelUIGO = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
+
+            if (!levelUIGO)
+            {
+                EditorUtils.DisplayDialogBox("Error", $"Unable to find the {prefabName} prefab!");
                 return;
             }
 
             DestroyAll();
 
-            var spawnedGO = Object.Instantiate(splashUIGO);
+            var spawnedGO = Object.Instantiate(levelUIGO);
             spawnedGO.transform.DetachChildren();
             Object.DestroyImmediate(spawnedGO);
 
