@@ -9,7 +9,7 @@ namespace DemoScene
 	{
 		public static event UnityAction OnJumpPadInteraction;
 
-		[SerializeField] private float _targetScale = 0.8f;
+		[SerializeField] private float _targetScale = 0.6f;
 		[SerializeField] private float _scaleDuration = 1f;
 
 		private Vector3 _initialScale;

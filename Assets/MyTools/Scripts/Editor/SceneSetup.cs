@@ -114,9 +114,9 @@ namespace MyTools
 
         private static void SetupAndSaveUsingPrefab(string prefabPath, string prefabName)
         {
-            var levelUIGO = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
+            var prefab = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject)) as GameObject;
 
-            if (!levelUIGO)
+            if (!prefab)
             {
                 EditorUtils.DisplayDialogBox("Error", $"Unable to find the {prefabName} prefab!");
                 return;
@@ -124,9 +124,10 @@ namespace MyTools
 
             DestroyAll();
 
-            var spawnedGO = Object.Instantiate(levelUIGO);
-            spawnedGO.transform.DetachChildren();
-            Object.DestroyImmediate(spawnedGO);
+            var spawnedPrefab = InstantiateAsPrefab(prefab, prefabName);
+            PrefabUtility.UnpackPrefabInstance(spawnedPrefab, PrefabUnpackMode.OutermostRoot, InteractionMode.AutomatedAction);
+            spawnedPrefab.transform.DetachChildren();
+            Object.DestroyImmediate(spawnedPrefab);
 
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
             ForceSaveSceneAndProject.FunctionForceSaveSceneAndProject();
@@ -162,10 +163,10 @@ namespace MyTools
         {
             if (prefab)
             {
-                var spawnedGO = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+                var spawnedPrefab = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
                 EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
 
-                return spawnedGO;
+                return spawnedPrefab;
             }
 
             EditorUtils.DisplayDialogBox("Error", $"Unable to find the {prefabName} prefab!");
