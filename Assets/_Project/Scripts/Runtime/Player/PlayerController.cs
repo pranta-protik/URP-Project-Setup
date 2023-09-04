@@ -18,6 +18,7 @@ namespace Project
 		[Header("Movement Settings")]
 		[SerializeField] private float _moveSpeed = 300f;
 		[SerializeField] private float _rotationSpeed = 300f;
+		[SerializeField] private float _stoppingSpeed = 3f;
 		[SerializeField] private float _smoothTime = 0.2f;
 
 		[Header("Jump Settings")]
@@ -95,7 +96,7 @@ namespace Project
 			}
 			else
 			{
-				_moveDir = Vector3.zero;
+				_moveDir = Vector3.Lerp(_moveDir, Vector3.zero, _stoppingSpeed * Time.deltaTime);
 			}
 
 			_stateMachine.Update();

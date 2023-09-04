@@ -1,5 +1,4 @@
 using MyTools;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace Project
@@ -22,12 +21,6 @@ namespace Project
 		protected override void OnAwake()
 		{
 			CurrentGameState = GameState.Waiting;
-		}
-
-		private void Update()
-		{
-			if (Input.GetKeyDown(KeyCode.C)) LevelCompleted();
-			if (Input.GetKeyDown(KeyCode.F)) LevelFailed();
 		}
 
 		public void LevelStarted()

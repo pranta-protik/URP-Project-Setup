@@ -11,5 +11,12 @@ namespace Project
         public const string IN_GAME_LEVEL_COUNT = "InGameLevelCount";
 
         #endregion
+
+
+        #region Tags
+
+        public const string PLAYER_TAG = "Player";
+
+        #endregion
     }
 }
