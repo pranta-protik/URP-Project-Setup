@@ -2,7 +2,7 @@ using DG.Tweening;
 using Project;
 using UnityEngine;
 
-namespace SampleScene
+namespace DemoScene
 {
 	public class JumpPad : MonoBehaviour
 	{

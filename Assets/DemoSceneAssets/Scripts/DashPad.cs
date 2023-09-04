@@ -1,7 +1,7 @@
 using Project;
 using UnityEngine;
 
-namespace SampleScene
+namespace DemoScene
 {
 	public class DashPad : MonoBehaviour
 	{

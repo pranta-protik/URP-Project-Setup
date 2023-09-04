@@ -76,7 +76,7 @@ namespace Project
 			// Declate Transitions
 			At(locomotionState, jumpState, new FuncPredicate(() => _jumpTimer.IsRunning));
 			At(locomotionState, dashState, new FuncPredicate(() => _dashTimer.IsRunning));
-			At(dashState, jumpState, new FuncPredicate(() => _dashTimer.IsRunning));
+			At(dashState, jumpState, new FuncPredicate(() => _jumpTimer.IsRunning));
 
 			Any(locomotionState, new FuncPredicate(() => _groundChecker.IsGrounded && !_jumpTimer.IsRunning && !_dashTimer.IsRunning));
 
@@ -133,8 +133,11 @@ namespace Project
 
 		private void HandleRotation()
 		{
-			var targetRotation = Quaternion.LookRotation(_moveDir);
-			transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+			if (_moveDir != Vector3.zero)
+			{
+				var targetRotation = Quaternion.LookRotation(_moveDir);
+				transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+			}
 		}
 
 		private void HandleHorizontalMovement()
