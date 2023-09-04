@@ -1,11 +1,14 @@
 using DG.Tweening;
 using Project;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DemoScene
 {
 	public class JumpPad : MonoBehaviour
 	{
+		public static event UnityAction OnJumpPadInteraction;
+
 		[SerializeField] private float _targetScale = 0.8f;
 		[SerializeField] private float _scaleDuration = 1f;
 
@@ -20,6 +23,8 @@ namespace DemoScene
 		{
 			if (other.transform.TryGetComponent<ICharacterActions>(out ICharacterActions characterActions))
 			{
+				OnJumpPadInteraction?.Invoke();
+
 				characterActions.Jump();
 
 				transform.DOKill();
