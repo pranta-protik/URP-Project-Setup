@@ -5,6 +5,9 @@ namespace Project
 {
 	public class LevelStartTriggerUI : MonoBehaviour, IPointerDownHandler
 	{
-		public void OnPointerDown(PointerEventData eventData) => GameManager.Instance.LevelStart();
+		public void OnPointerDown(PointerEventData eventData)
+		{
+			if (GameManager.Instance.CurrentGameState == GameManager.GameState.Waiting) GameManager.Instance.LevelStarted();
+		}
 	}
 }

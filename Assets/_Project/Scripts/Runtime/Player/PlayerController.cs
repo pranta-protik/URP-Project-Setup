@@ -89,7 +89,15 @@ namespace Project
 
 		private void Update()
 		{
-			_moveDir = new Vector3(_joystick.Direction.x, 0f, _joystick.Direction.y);
+			if (GameManager.Instance.CurrentGameState == GameManager.GameState.Running)
+			{
+				_moveDir = new Vector3(_joystick.Direction.x, 0f, _joystick.Direction.y);
+			}
+			else
+			{
+				_moveDir = Vector3.zero;
+			}
+
 			_stateMachine.Update();
 
 			HandleTimers();

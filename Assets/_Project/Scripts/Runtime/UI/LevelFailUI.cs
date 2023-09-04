@@ -1,4 +1,5 @@
 using DG.Tweening;
+using MyTools;
 using UnityEngine;
 
 namespace Project
@@ -26,5 +27,7 @@ namespace Project
 			_buttonTransform.DOKill();
 			_buttonTransform.localScale = _initialButtonScale;
 		}
+
+		public void ReloadScene() => SceneUtils.ReloadScene();
 	}
 }

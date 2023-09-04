@@ -1,4 +1,5 @@
 using DG.Tweening;
+using MyTools;
 using UnityEngine;
 
 namespace Project
@@ -10,6 +11,7 @@ namespace Project
 		[SerializeField] private float _scaleDuration = 0.5f;
 
 		private Vector3 _initialButtonScale;
+		private int _nextSceneIndex;
 
 		private void Awake()
 		{
@@ -26,5 +28,8 @@ namespace Project
 			_buttonTransform.DOKill();
 			_buttonTransform.localScale = _initialButtonScale;
 		}
+
+		public void SetNextSceneIndex(int sceneIndex) => _nextSceneIndex = sceneIndex;
+		public void LoadNextScene() => SceneUtils.LoadSpecificScene(_nextSceneIndex);
 	}
 }

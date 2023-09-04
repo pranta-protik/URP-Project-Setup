@@ -874,6 +874,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dontDestroyOnLoad: 0
+  _uiScreenDelay: 2
+  _levelStartChannel: {fileID: 11400000, guid: c1a8a7527aa52ed44ae12ce6a4c12575, type: 2}
+  _levelCompleteChannel: {fileID: 11400000, guid: 44cd26bc086b0ab4a80f774b087757b1,
+    type: 2}
+  _levelFailChannel: {fileID: 11400000, guid: 4e9cc1a3e7b07ca4a9dbf726749ecaf1, type: 2}
 --- !u!1 &5295070016885940925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,7 +1073,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dontDestroyOnLoad: 0
-  _levelStartChannel: {fileID: 11400000, guid: c1a8a7527aa52ed44ae12ce6a4c12575, type: 2}
 --- !u!1 &7092499669803030957
 GameObject:
   m_ObjectHideFlags: 0
