@@ -1,14 +1,14 @@
-using System;
 using MyTools;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Project
 {
 	public class GameManager : Singleton<GameManager>
 	{
-		public event Action OnLevelStart;
-		public event Action OnLevelComplete;
-		public event Action OnLevelFail;
+		public event UnityAction OnLevelStart;
+		public event UnityAction OnLevelComplete;
+		public event UnityAction OnLevelFail;
 
 		[SerializeField] private EventChannel _levelStartChannel;
 

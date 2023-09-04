@@ -23,10 +23,7 @@ namespace Project
 			}
 			else
 			{
-				SceneUtils.LoadSpecificScene(PlayerPrefs.GetInt(ConstUtils.LAST_PLAYED_SCENE_INDEX, (int)SceneIndex.GAME)).completed += (_) =>
-				{
-					SceneUtils.LoadSpecificScene((int)SceneIndex.UI, LoadSceneMode.Additive);
-				};
+				SceneUtils.LoadSpecificScene(PlayerPrefs.GetInt(ConstUtils.LAST_PLAYED_SCENE_INDEX, (int)SceneIndex.GAME));
 			}
 		}
 	}

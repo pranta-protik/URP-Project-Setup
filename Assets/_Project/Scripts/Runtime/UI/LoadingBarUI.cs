@@ -1,13 +1,14 @@
-using Project;
+using MyTools;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using KBCore.Refs;
 
-namespace MyTools
+namespace Project
 {
-	public class LoadingBarUI : MonoBehaviour
+	public class LoadingBarUI : ValidatedMonoBehaviour
 	{
-		[SerializeField] private Image _fillMask;
+		[SerializeField, Anywhere] private Image _fillMask;
 		[SerializeField, Range(0f, 10f)] private float _loadingDuration = 3f;
 
 		private CountdownTimer _loadingTimer;
@@ -18,10 +19,7 @@ namespace MyTools
 			_loadingTimer = new CountdownTimer(_loadingDuration);
 			_loadingTimer.OnTimerStop += () =>
 			{
-				SceneUtils.LoadSpecificScene((int)SceneIndex.GAME).completed += (_) =>
-				{
-					SceneUtils.LoadSpecificScene((int)SceneIndex.UI, LoadSceneMode.Additive);
-				};
+				SceneUtils.LoadSpecificScene((int)SceneIndex.GAME);
 			};
 		}
 
