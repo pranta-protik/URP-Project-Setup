@@ -7,12 +7,12 @@ namespace Project
 	{
 		private void Awake()
 		{
-			DontDestroyOnLoad(this);
+			DontDestroyOnLoad(gameObject);
 
 			if (PlayerPrefs.GetInt(ConstUtils.FIRST_TIME_PLAYING, 1) == 1)
 			{
-				SceneUtils.LoadSpecificScene((int)SceneIndex.SPLASH);
 				PlayerPrefs.SetInt(ConstUtils.FIRST_TIME_PLAYING, 0);
+				SceneUtils.LoadSpecificScene((int)SceneIndex.SPLASH);
 			}
 			else
 			{

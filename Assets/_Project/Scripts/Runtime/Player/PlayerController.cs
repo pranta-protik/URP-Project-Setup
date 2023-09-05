@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Project
 {
-	public class PlayerController : ValidatedMonoBehaviour, ICharacterActions
+	public class PlayerController : ValidatedMonoBehaviour, ICharacterActions, IDataPersistence
 	{
 		[Header("References")]
 		[SerializeField, Self] private Rigidbody _rigidbody;
@@ -186,6 +186,23 @@ namespace Project
 		private void SmoothSpeed(float value)
 		{
 			_currentSpeed = Mathf.SmoothDamp(_currentSpeed, value, ref _velocity, _smoothTime);
+		}
+
+		public void LoadData(GameData gameData)
+		{
+			transform.position = gameData.playerPosition;
+		}
+
+		public void SaveData(GameData gameData)
+		{
+			if (GameManager.Instance.CurrentGameState == GameManager.GameState.GameOver)
+			{
+				gameData.playerPosition = Vector3.zero;
+			}
+			else
+			{
+				gameData.playerPosition = transform.position;
+			}
 		}
 	}
 }

@@ -22,7 +22,7 @@ namespace MyTools
             if (_dontDestroyOnLoad)
             {
                 transform.parent = null;
-                DontDestroyOnLoad(this);
+                DontDestroyOnLoad(gameObject);
             }
 
             OnAwake();

@@ -34,12 +34,14 @@ namespace Project
 		{
 			CurrentGameState = GameState.GameOver;
 			OnLevelCompleted?.Invoke(LevelLoader.Instance.GetNextSceneIndex());
+			DataPersistenceManager.Instance.SaveGame();
 		}
 
 		public void LevelFailed()
 		{
 			CurrentGameState = GameState.GameOver;
 			OnLevelFailed?.Invoke();
+			DataPersistenceManager.Instance.SaveGame();
 		}
 	}
 }

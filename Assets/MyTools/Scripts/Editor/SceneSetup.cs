@@ -40,16 +40,26 @@ namespace MyTools
         {
             if (TryOpenScene(relativePath))
             {
-                var initializerGO = GameObject.Find("Initializer") ?? new GameObject("Initializer");
-                initializerGO.GetOrAdd<Initializer>();
+                var initializerPrefab = AssetDatabase.LoadAssetAtPath("Assets/_Project/Prefabs/Persistent/Initializer.prefab", typeof(GameObject)) as GameObject;
+                if (!GameObject.Find("Initializer"))
+                {
+                    InstantiateAsPrefab(initializerPrefab, "Initializer");
+                }
 
-                var levelLoaderGO = GameObject.Find("LevelLoader") ?? new GameObject("LevelLoader");
-                levelLoaderGO.GetOrAdd<LevelLoader>();
+                var levelLoaderPrefab = AssetDatabase.LoadAssetAtPath("Assets/_Project/Prefabs/Persistent/LevelLoader.prefab", typeof(GameObject)) as GameObject;
+                if (!GameObject.Find("LevelLoader"))
+                {
+                    InstantiateAsPrefab(levelLoaderPrefab, "LevelLoader");
+                }
+
+                var dataPersistenceManagerPrefab = AssetDatabase.LoadAssetAtPath("Assets/_Project/Prefabs/Persistent/DataPersistenceManager.prefab", typeof(GameObject)) as GameObject;
+                if (!GameObject.Find("DataPersistenceManager"))
+                {
+                    InstantiateAsPrefab(dataPersistenceManagerPrefab, "DataPersistenceManager");
+                }
 
                 EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
                 ForceSaveSceneAndProject.FunctionForceSaveSceneAndProject();
-
-                Selection.activeGameObject = levelLoaderGO;
             }
         }
 
@@ -150,15 +160,25 @@ namespace MyTools
                 }
             }
 
-            Lightmapping.BakeAsync();
+            if (EditorUtils.DisplayDialogBoxWithOptions("Generate Lightmap!", "Do you want to generate lightmap for this scene?"))
+            {
+                Lightmapping.BakeAsync();
 
-            Lightmapping.bakeCompleted += () =>
+                Lightmapping.bakeCompleted += () =>
+                {
+                    EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+                    ForceSaveSceneAndProject.FunctionForceSaveSceneAndProject();
+
+                    TryOpenScene(scenePath, true);
+                };
+            }
+            else
             {
                 EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
                 ForceSaveSceneAndProject.FunctionForceSaveSceneAndProject();
 
                 TryOpenScene(scenePath, true);
-            };
+            }
         }
 
         private static GameObject InstantiateAsPrefab(GameObject prefab, string prefabName)
