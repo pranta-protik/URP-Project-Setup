@@ -13,13 +13,14 @@ namespace Project
 		}
 
 		public event UnityAction OnLevelStarted;
-		public event UnityAction OnLevelCompleted;
+		public event UnityAction<int> OnLevelCompleted;
 		public event UnityAction OnLevelFailed;
 
 		public GameState CurrentGameState { get; private set; }
 
 		protected override void OnAwake()
 		{
+			base.OnAwake();
 			CurrentGameState = GameState.Waiting;
 		}
 
@@ -32,7 +33,7 @@ namespace Project
 		public void LevelCompleted()
 		{
 			CurrentGameState = GameState.GameOver;
-			OnLevelCompleted?.Invoke();
+			OnLevelCompleted?.Invoke(LevelLoader.Instance.GetNextSceneIndex());
 		}
 
 		public void LevelFailed()

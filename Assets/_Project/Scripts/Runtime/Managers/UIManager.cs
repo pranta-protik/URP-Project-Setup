@@ -37,9 +37,9 @@ namespace Project
 			_levelStartChannel?.Invoke(new Empty());
 		}
 
-		private void GameManager_OnLevelCompleted()
+		private void GameManager_OnLevelCompleted(int sceneIndex)
 		{
-			StartCoroutine(DelayAction(() => _levelCompleteChannel?.Invoke(LevelManager.Instance.GetNextSceneIndex())));
+			StartCoroutine(DelayAction(() => _levelCompleteChannel?.Invoke(sceneIndex)));
 		}
 
 		private void GameManager_OnLevelFailed()

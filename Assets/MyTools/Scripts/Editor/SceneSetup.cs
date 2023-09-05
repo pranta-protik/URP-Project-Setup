@@ -41,13 +41,15 @@ namespace MyTools
             if (TryOpenScene(relativePath))
             {
                 var initializerGO = GameObject.Find("Initializer") ?? new GameObject("Initializer");
-
                 initializerGO.GetOrAdd<Initializer>();
+
+                var levelLoaderGO = GameObject.Find("LevelLoader") ?? new GameObject("LevelLoader");
+                levelLoaderGO.GetOrAdd<LevelLoader>();
 
                 EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
                 ForceSaveSceneAndProject.FunctionForceSaveSceneAndProject();
 
-                Selection.activeGameObject = initializerGO;
+                Selection.activeGameObject = levelLoaderGO;
             }
         }
 

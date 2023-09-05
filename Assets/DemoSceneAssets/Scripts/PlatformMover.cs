@@ -13,5 +13,10 @@ namespace DemoScene
 		{
 			transform.DOLocalMove(_moveTo, _moveTime).SetEase(_ease).SetLoops(-1, LoopType.Yoyo);
 		}
+
+		private void OnDestroy()
+		{
+			transform.DOKill();
+		}
 	}
 }

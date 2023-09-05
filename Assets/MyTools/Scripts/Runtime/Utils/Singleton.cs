@@ -12,7 +12,7 @@ namespace MyTools
         {
             if (Instance != null)
             {
-                DebugUtils.LogWarning($"There's more than one instance of {typeof(T).Name} in the scene!");
+                DebugUtils.LogWarning($"There's more than one instance of {typeof(T).Name} in the scene! Destroying the new instance!");
                 Destroy(gameObject);
                 return;
             }

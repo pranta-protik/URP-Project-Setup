@@ -1,21 +1,12 @@
-using System;
 using MyTools;
 using UnityEngine;
 
 namespace Project
 {
-	public class LevelManager : Singleton<LevelManager>
+	public class LevelLoader : Singleton<LevelLoader>
 	{
-		private int _totalSceneCount;
-		private int _firstLevelSceneIndex;
-
-		protected override void OnAwake()
-		{
-			base.OnAwake();
-
-			_totalSceneCount = PlayerPrefs.GetInt(ConstUtils.TOTAL_SCENE_COUNT, Enum.GetNames(typeof(SceneIndex)).Length);
-			_firstLevelSceneIndex = PlayerPrefs.GetInt(ConstUtils.FIRST_LEVEL_SCENE_INDEX, (int)SceneIndex.GAME);
-		}
+		[SerializeField, Min(0)] private int _totalSceneCount;
+		[SerializeField, Min(0)] private int _firstLevelSceneIndex = (int)SceneIndex.GAME;
 
 		public int GetNextSceneIndex()
 		{
