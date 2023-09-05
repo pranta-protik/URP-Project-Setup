@@ -12,8 +12,8 @@ namespace Project
 		[SerializeField, Self] private Rigidbody _rigidbody;
 		[SerializeField, Child] private Animator _animator;
 		[SerializeField, Self] private GroundChecker _groundChecker;
-		[SerializeField, Anywhere] private CinemachineVirtualCamera _playerVCam;
 		[SerializeField, Anywhere] private Joystick _joystick;
+		[SerializeField, Anywhere] private CinemachineVirtualCamera _playerVCam;
 
 		[Header("Movement Settings")]
 		[SerializeField] private float _moveSpeed = 300f;
