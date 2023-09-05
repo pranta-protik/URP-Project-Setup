@@ -7,7 +7,7 @@ namespace DemoScene
 	{
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.CompareTag(ConstUtils.PLAYER_TAG))
+			if (other.gameObject.CompareTag(ConstUtils.PLAYER_TAG))
 			{
 				GameManager.Instance.LevelFailed();
 			}

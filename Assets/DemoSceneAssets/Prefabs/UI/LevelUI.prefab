@@ -703,11 +703,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handTransform: {fileID: 9120253830303713056}
-  _targetHandPosition: {x: 210, y: -390, z: 0}
-  _moveDuration: 1
+  _moveTo: {x: 210, y: -390, z: 0}
+  _moveTime: 1
+  _moveEase: 4
   _textTransform: {fileID: 7617256011235122987}
-  _targetTextScale: 1.2
-  _scaleDuration: 0.5
+  _scaleTo: 1.2
+  _scaleTime: 0.5
+  _scaleEase: 4
 --- !u!1 &3151094370955016764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,8 +1342,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonTransform: {fileID: 1721755128690528724}
-  _targetButtonScale: 1.1
-  _scaleDuration: 0.5
+  _ScaleTo: 1.1
+  _scaleTime: 0.5
+  _ease: 4
 --- !u!1 &4652255106918489147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,8 +1592,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonTransform: {fileID: 7233159857465392123}
-  _targetButtonScale: 1.1
-  _scaleDuration: 0.5
+  _scaleTo: 1.1
+  _scaleTime: 0.5
+  _ease: 4
 --- !u!1 &5733315402055456763
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,28 @@
+using Project;
+using UnityEngine;
+
+namespace DemoScene
+{
+	public class PlatformCollisionHandler : MonoBehaviour
+	{
+		private void OnCollisionEnter(Collision other)
+		{
+			if (other.gameObject.CompareTag(ConstUtils.PLAYER_TAG))
+			{
+				// If the contact normal is pointing up, the player has collided with the top of the platform
+				var contact = other.GetContact(0);
+				if (contact.normal.y > 0.5f) return;
+
+				other.transform.SetParent(transform);
+			}
+		}
+
+		private void OnCollisionExit(Collision other)
+		{
+			if (other.gameObject.CompareTag(ConstUtils.PLAYER_TAG))
+			{
+				other.transform.SetParent(null);
+			}
+		}
+	}
+}

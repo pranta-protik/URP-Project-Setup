@@ -7,8 +7,9 @@ namespace Project
 	public class LevelFailUI : MonoBehaviour
 	{
 		[SerializeField] private Transform _buttonTransform;
-		[SerializeField] private float _targetButtonScale = 1.1f;
-		[SerializeField] private float _scaleDuration = 0.5f;
+		[SerializeField] private float _scaleTo = 1.1f;
+		[SerializeField] private float _scaleTime = 0.5f;
+		[SerializeField] private Ease _ease = Ease.InOutSine;
 
 		private Vector3 _initialButtonScale;
 
@@ -19,7 +20,7 @@ namespace Project
 
 		private void OnEnable()
 		{
-			_buttonTransform.DOScale(_buttonTransform.localScale * _targetButtonScale, _scaleDuration).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+			_buttonTransform.DOScale(_buttonTransform.localScale * _scaleTo, _scaleTime).SetEase(_ease).SetLoops(-1, LoopType.Yoyo);
 		}
 
 		private void OnDisable()

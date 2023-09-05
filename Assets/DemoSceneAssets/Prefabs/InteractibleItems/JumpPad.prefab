@@ -400,6 +400,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpPad
       objectReference: {fileID: 0}
+    - target: {fileID: 2125758587374121904, guid: 9caf389253284694fb73da6924bfcdef,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -449,5 +454,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9bd436fc7b62494881ef20feb84ee39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetScale: 0.6
-  _scaleDuration: 1
+  _scaleTo: 0.6
+  _scaleTime: 1
+  _vibrato: 5
+  _randomness: 30
+  _fadeOut: 1
+  _shakeRandomnessMode: 1

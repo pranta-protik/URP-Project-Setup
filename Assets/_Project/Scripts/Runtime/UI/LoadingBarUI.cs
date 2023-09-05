@@ -1,7 +1,6 @@
 using MyTools;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using KBCore.Refs;
 
 namespace Project

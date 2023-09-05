@@ -9,28 +9,32 @@ namespace DemoScene
 	{
 		public static event UnityAction OnJumpPadInteraction;
 
-		[SerializeField] private float _targetScale = 0.6f;
-		[SerializeField] private float _scaleDuration = 1f;
+		[SerializeField] private float _scaleTo = 0.6f;
+		[SerializeField] private float _scaleTime = 1f;
+		[SerializeField] private int _vibrato = 5;
+		[SerializeField, Range(0f, 90f)] private float _randomness = 30f;
+		[SerializeField] private bool _fadeOut = true;
+		[SerializeField] private ShakeRandomnessMode _shakeRandomnessMode = ShakeRandomnessMode.Harmonic;
 
-		private Vector3 _initialScale;
+		private Vector3 _startScale;
 
 		private void Awake()
 		{
-			_initialScale = transform.localScale;
+			_startScale = transform.localScale;
 		}
 
 		private void OnCollisionEnter(Collision other)
 		{
-			if (other.transform.TryGetComponent<ICharacterActions>(out ICharacterActions characterActions))
+			if (other.gameObject.TryGetComponent<ICharacterActions>(out ICharacterActions characterActions))
 			{
 				OnJumpPadInteraction?.Invoke();
 
 				characterActions.Jump();
 
 				transform.DOKill();
-				transform.localScale = _initialScale;
+				transform.localScale = _startScale;
 
-				transform.DOShakeScale(_scaleDuration, _initialScale * _targetScale, 5, 30, true, ShakeRandomnessMode.Harmonic);
+				transform.DOShakeScale(_scaleTime, _startScale * _scaleTo, _vibrato, _randomness, _fadeOut, _shakeRandomnessMode);
 			}
 		}
 
