@@ -450,10 +450,7 @@ namespace MyTools
         {
             try
             {
-                var reader = new StreamReader(path);
-                var outputStr = reader.ReadToEnd();
-                reader.Close();
-
+                var outputStr = File.ReadAllText(path);
                 List<string> outputList = new List<string>();
 
                 // Remove empty lines
@@ -480,9 +477,7 @@ namespace MyTools
         {
             try
             {
-                var writer = new StreamWriter(path);
-                writer.WriteLine(data);
-                writer.Close();
+                File.WriteAllText(path, data);
             }
             catch
             {
