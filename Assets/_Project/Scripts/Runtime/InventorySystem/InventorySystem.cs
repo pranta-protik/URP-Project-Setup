@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using MyTools;
+using UnityEngine.Events;
 
 namespace Project
 {
 	public class InventorySystem : Singleton<InventorySystem>
 	{
+		public event UnityAction OnInventoryUpdated;
+
 		private Dictionary<InventoryItemData, InventoryItem> _inventoryItemsDictionary;
 		public List<InventoryItem> InventoryItemsList { get; private set; }
 
@@ -38,6 +41,8 @@ namespace Project
 				InventoryItemsList.Add(newItem);
 				_inventoryItemsDictionary.Add(itemData, newItem);
 			}
+
+			OnInventoryUpdated?.Invoke();
 		}
 
 		public void Remove(InventoryItemData itemData)
@@ -52,6 +57,8 @@ namespace Project
 					_inventoryItemsDictionary.Remove(itemData);
 				}
 			}
+
+			OnInventoryUpdated?.Invoke();
 		}
 	}
 }

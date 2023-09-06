@@ -10,15 +10,13 @@ namespace Project
 		[Header("References")]
 		[SerializeField, Anywhere] private Image _icon;
 		[SerializeField, Anywhere] private TextMeshProUGUI _label;
+		[SerializeField, Anywhere] private TextMeshProUGUI _stackLabel;
 
-		private void Start()
+		public void Set(InventoryItem item)
 		{
-
-		}
-
-		private void Update()
-		{
-
+			_icon.sprite = item.ItemData.icon;
+			_label.text = item.ItemData.displayName;
+			_stackLabel.text = item.StackSize.ToString();
 		}
 	}
 }

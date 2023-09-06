@@ -192,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 3926086062493857812}
   _label: {fileID: 3663586209889412334}
+  _stackLabel: {fileID: 237188164179676359}
 --- !u!1 &6092370337269069278
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +417,7 @@ GameObject:
   - component: {fileID: 8818648047282220356}
   - component: {fileID: 237188164179676359}
   m_Layer: 5
-  m_Name: Number
+  m_Name: StackLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

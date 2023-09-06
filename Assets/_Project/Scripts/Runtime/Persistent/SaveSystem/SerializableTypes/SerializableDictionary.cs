@@ -35,10 +35,11 @@ namespace Project
 				+ _keysList.Count + ") does not match the number of values ("
 				+ _valuesList.Count + ") which indicates that somethins went wrong!");
 
-				for (var i = 0; i < _keysList.Count; i++)
-				{
-					this.Add(_keysList[i], _valuesList[i]);
-				}
+			}
+
+			for (var i = 0; i < _keysList.Count; i++)
+			{
+				this.Add(_keysList[i], _valuesList[i]);
 			}
 		}
 	}

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using KBCore.Refs;
 using MyTools;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 namespace Project
@@ -191,18 +192,22 @@ namespace Project
 
 		public void LoadData(GameData gameData)
 		{
-			transform.position = gameData.playerPosition;
+			if (gameData.playerPositionDictionary.TryGetValue(SceneUtils.GetActiveSceneIndex(), out var playerPosition))
+			{
+				transform.position = playerPosition;
+			}
 		}
 
 		public void SaveData(GameData gameData)
 		{
-			if (GameManager.Instance.CurrentGameState == GameManager.GameState.GameOver)
+			if (gameData.playerPositionDictionary.ContainsKey(SceneUtils.GetActiveSceneIndex()))
 			{
-				gameData.playerPosition = Vector3.zero;
+				gameData.playerPositionDictionary.Remove(SceneUtils.GetActiveSceneIndex());
 			}
-			else
+
+			if (GameManager.Instance.CurrentGameState != GameManager.GameState.GameOver)
 			{
-				gameData.playerPosition = transform.position;
+				gameData.playerPositionDictionary.Add(SceneUtils.GetActiveSceneIndex(), transform.position);
 			}
 		}
 	}
