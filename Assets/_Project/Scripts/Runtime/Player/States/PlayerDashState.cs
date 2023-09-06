@@ -1,4 +1,3 @@
-using MyTools;
 using UnityEngine;
 
 namespace Project
@@ -12,7 +11,7 @@ namespace Project
 		public override void OnEnter()
 		{
 			// DebugUtils.Log("PlayerDashState.OnEnter");
-			_animator.SetBool(IsDashing, true);
+			_animator.SetBool(_IsDashing, true);
 		}
 
 		public override void FixedUpdate()

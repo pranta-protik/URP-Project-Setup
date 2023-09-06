@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using KBCore.Refs;
 using MyTools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,10 +9,13 @@ namespace Project
 {
 	public class UIManager : Singleton<UIManager>
 	{
-		[SerializeField, Range(0f, 15f)] private float _uiScreenDelay = 2f;
+		[Header("References")]
 		[SerializeField] private EventChannel _levelStartChannel;
 		[SerializeField] private IntEventChannel _levelCompleteChannel;
 		[SerializeField] private EventChannel _levelFailChannel;
+		[SerializeField, Range(0f, 15f)] private float _uiScreenDelay = 2f;
+
+		private void OnValidate() => this.ValidateRefs();
 
 		private void Start()
 		{

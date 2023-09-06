@@ -16,23 +16,23 @@ namespace MyTools
         private const float SCROLL_VIEW_WIDTH = 500f;
         private const float SCROLL_VIEW_HEIGHT = 65f;
         private const float VERTICAL_SPACE = 10;
-        private static ProjectSetupWindow _projectSetupWindow;
-        private static GUIStyle _titleLabelStyle;
-        private static Vector2 _scrollPosForDefaultFolders;
-        private static Vector2 _scrollPosForDefaultScenes;
-        private static Vector2 _scrollPosForUnityPackages;
-        private static Vector2 _scrollPosForOpenSources;
-        private static Vector2 _scrollPosForAssetStoreAssets;
-        private static Vector2 _scrollPosForLocalDriveAssets;
+        private static ProjectSetupWindow _ProjectSetupWindow;
+        private static GUIStyle _TitleLabelStyle;
+        private static Vector2 _ScrollPosForDefaultFolders;
+        private static Vector2 _ScrollPosForDefaultScenes;
+        private static Vector2 _ScrollPosForUnityPackages;
+        private static Vector2 _ScrollPosForOpenSources;
+        private static Vector2 _ScrollPosForAssetStoreAssets;
+        private static Vector2 _ScrollPosForLocalDriveAssets;
 
         private void OnEnable()
         {
-            _titleLabelStyle = new GUIStyle
+            _TitleLabelStyle = new GUIStyle
             {
                 fontStyle = FontStyle.Bold,
                 alignment = TextAnchor.MiddleCenter
             };
-            _titleLabelStyle.normal.textColor = Color.white;
+            _TitleLabelStyle.normal.textColor = Color.white;
         }
 
         private void OnGUI()
@@ -65,16 +65,16 @@ namespace MyTools
 
             EditorGUILayout.EndVertical();
 
-            if (_projectSetupWindow) _projectSetupWindow.Repaint();
+            if (_ProjectSetupWindow) _ProjectSetupWindow.Repaint();
         }
 
         private static void CreateDefaultFolders()
         {
             EditorGUILayout.BeginVertical();
 
-            GUILayout.Label("Create Default Folders", _titleLabelStyle);
+            GUILayout.Label("Create Default Folders", _TitleLabelStyle);
 
-            _scrollPosForDefaultFolders = EditorGUILayout.BeginScrollView(_scrollPosForDefaultFolders, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
+            _ScrollPosForDefaultFolders = EditorGUILayout.BeginScrollView(_ScrollPosForDefaultFolders, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
 
             EditorGUI.BeginDisabledGroup(true);
 
@@ -128,9 +128,9 @@ namespace MyTools
         {
             EditorGUILayout.BeginVertical();
 
-            GUILayout.Label("Create Default Scenes", _titleLabelStyle);
+            GUILayout.Label("Create Default Scenes", _TitleLabelStyle);
 
-            _scrollPosForDefaultScenes = EditorGUILayout.BeginScrollView(_scrollPosForDefaultScenes, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
+            _ScrollPosForDefaultScenes = EditorGUILayout.BeginScrollView(_ScrollPosForDefaultScenes, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
 
             EditorGUI.BeginDisabledGroup(true);
 
@@ -184,9 +184,9 @@ namespace MyTools
         {
             EditorGUILayout.BeginVertical();
 
-            GUILayout.Label("Install Unity Packages", _titleLabelStyle);
+            GUILayout.Label("Install Unity Packages", _TitleLabelStyle);
 
-            _scrollPosForUnityPackages = EditorGUILayout.BeginScrollView(_scrollPosForUnityPackages, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
+            _ScrollPosForUnityPackages = EditorGUILayout.BeginScrollView(_ScrollPosForUnityPackages, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
 
             EditorGUI.BeginDisabledGroup(true);
 
@@ -238,9 +238,9 @@ namespace MyTools
         {
             EditorGUILayout.BeginVertical();
 
-            GUILayout.Label("Install Open Sources", _titleLabelStyle);
+            GUILayout.Label("Install Open Sources", _TitleLabelStyle);
 
-            _scrollPosForOpenSources = EditorGUILayout.BeginScrollView(_scrollPosForOpenSources, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
+            _ScrollPosForOpenSources = EditorGUILayout.BeginScrollView(_ScrollPosForOpenSources, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
 
             EditorGUI.BeginDisabledGroup(true);
 
@@ -292,7 +292,7 @@ namespace MyTools
         {
             EditorGUILayout.BeginVertical();
 
-            GUILayout.Label("Import Asset Store Assets", _titleLabelStyle);
+            GUILayout.Label("Import Asset Store Assets", _TitleLabelStyle);
 
             EditorGUILayout.BeginHorizontal();
 
@@ -318,7 +318,7 @@ namespace MyTools
 
             EditorGUILayout.EndHorizontal();
 
-            _scrollPosForAssetStoreAssets = EditorGUILayout.BeginScrollView(_scrollPosForAssetStoreAssets, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
+            _ScrollPosForAssetStoreAssets = EditorGUILayout.BeginScrollView(_ScrollPosForAssetStoreAssets, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
 
             EditorGUI.BeginDisabledGroup(true);
 
@@ -371,7 +371,7 @@ namespace MyTools
         {
             EditorGUILayout.BeginVertical();
 
-            GUILayout.Label("Import Local Drive Assets", _titleLabelStyle);
+            GUILayout.Label("Import Local Drive Assets", _TitleLabelStyle);
 
             EditorGUILayout.BeginHorizontal();
 
@@ -397,7 +397,7 @@ namespace MyTools
 
             EditorGUILayout.EndHorizontal();
 
-            _scrollPosForLocalDriveAssets = EditorGUILayout.BeginScrollView(_scrollPosForLocalDriveAssets, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
+            _ScrollPosForLocalDriveAssets = EditorGUILayout.BeginScrollView(_ScrollPosForLocalDriveAssets, GUILayout.Width(SCROLL_VIEW_WIDTH), GUILayout.Height(SCROLL_VIEW_HEIGHT));
 
             EditorGUI.BeginDisabledGroup(true);
 
@@ -451,7 +451,7 @@ namespace MyTools
             try
             {
                 var outputStr = File.ReadAllText(path);
-                List<string> outputList = new List<string>();
+                List<string> outputList = new();
 
                 // Remove empty lines
                 var pattern = @"^\s*$";
@@ -487,9 +487,9 @@ namespace MyTools
 
         public static void InitWindow()
         {
-            _projectSetupWindow = GetWindow<ProjectSetupWindow>(true, WINDOW_TITLE, true);
-            _projectSetupWindow.minSize = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-            _projectSetupWindow.Show();
+            _ProjectSetupWindow = GetWindow<ProjectSetupWindow>(true, WINDOW_TITLE, true);
+            _ProjectSetupWindow.minSize = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
+            _ProjectSetupWindow.Show();
         }
     }
 }

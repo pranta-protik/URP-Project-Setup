@@ -12,29 +12,29 @@ namespace MyTools
 			Heavy = HapticTypes.HeavyImpact
 		}
 
-		private const string HAPTIC_STATUS = "HapticStatus";
-		private static int _hapticStatus;
-		private static bool _enableLog;
+		private const string PREF_HAPTIC_STATUS = "HapticStatus";
+		private static int _HapticStatus;
+		private static bool _EnableLog;
 
-		static HapticUtils() => _hapticStatus = PlayerPrefs.GetInt(HAPTIC_STATUS, 1);
+		static HapticUtils() => _HapticStatus = PlayerPrefs.GetInt(PREF_HAPTIC_STATUS, 1);
 
 		public static void SetHapticLevel(HapticScale hapticScale)
 		{
-			if (_hapticStatus == 0) return;
+			if (_HapticStatus == 0) return;
 			MMVibrationManager.Haptic((HapticTypes)hapticScale);
 
-			if (_enableLog) DebugUtils.Log($"{hapticScale} Impact");
+			if (_EnableLog) DebugUtils.Log($"{hapticScale} Impact");
 		}
 
 		public static void SetHapticStatus(bool enable)
 		{
-			_hapticStatus = enable ? 1 : 0;
-			PlayerPrefs.SetInt(HAPTIC_STATUS, _hapticStatus);
+			_HapticStatus = enable ? 1 : 0;
+			PlayerPrefs.SetInt(PREF_HAPTIC_STATUS, _HapticStatus);
 		}
 
 		public static void SetLogStatus(bool enable)
 		{
-			_enableLog = enable;
+			_EnableLog = enable;
 		}
 	}
 }

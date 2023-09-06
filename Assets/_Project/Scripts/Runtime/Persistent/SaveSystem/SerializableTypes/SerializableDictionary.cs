@@ -8,8 +8,8 @@ namespace Project
 	[Serializable]
 	public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
 	{
-		[SerializeField] private List<TKey> _keysList = new List<TKey>();
-		[SerializeField] private List<TValue> _valuesList = new List<TValue>();
+		[SerializeField] private List<TKey> _keysList = new();
+		[SerializeField] private List<TValue> _valuesList = new();
 
 		// Save the dictionary to lists
 		public void OnBeforeSerialize()

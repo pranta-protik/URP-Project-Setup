@@ -5,10 +5,11 @@ namespace Project
 {
 	public abstract class PlayerBaseState : IState
 	{
+		protected static readonly int _IsJumping = Animator.StringToHash("IsJumping");
+		protected static readonly int _IsDashing = Animator.StringToHash("IsDashing");
+
 		protected readonly PlayerController _playerController;
 		protected readonly Animator _animator;
-		protected static readonly int IsJumping = Animator.StringToHash("IsJumping");
-		protected static readonly int IsDashing = Animator.StringToHash("IsDashing");
 
 		protected PlayerBaseState(PlayerController playerController, Animator animator)
 		{

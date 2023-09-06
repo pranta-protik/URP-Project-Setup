@@ -6,12 +6,12 @@ namespace MyTools
 	public class StateMachine
 	{
 		private StateNode _current;
-		private Dictionary<Type, StateNode> _nodes = new();
-		private HashSet<Transition> _anyTransitions = new();
+		private readonly Dictionary<Type, StateNode> _nodesDictionary = new();
+		private readonly HashSet<Transition> _anyTransitionsSet = new();
 
 		public void SetState(IState state)
 		{
-			_current = _nodes[state.GetType()];
+			_current = _nodesDictionary[state.GetType()];
 			_current.State?.OnEnter();
 		}
 
@@ -34,7 +34,7 @@ namespace MyTools
 
 		private ITransition GetTransition()
 		{
-			foreach (var transition in _anyTransitions)
+			foreach (var transition in _anyTransitionsSet)
 			{
 				if (transition.Condition.Evaluate())
 				{
@@ -42,7 +42,7 @@ namespace MyTools
 				}
 			}
 
-			foreach (var transition in _current.Transitions)
+			foreach (var transition in _current.TransitionsSet)
 			{
 				if (transition.Condition.Evaluate())
 				{
@@ -58,12 +58,12 @@ namespace MyTools
 			if (state == _current.State) return;
 
 			var previousState = _current.State;
-			var nextState = _nodes[state.GetType()].State;
+			var nextState = _nodesDictionary[state.GetType()].State;
 
 			previousState?.OnExit();
 			nextState?.OnEnter();
 
-			_current = _nodes[state.GetType()];
+			_current = _nodesDictionary[state.GetType()];
 		}
 
 		public void AddTransition(IState from, IState to, IPredicate condition)
@@ -73,17 +73,17 @@ namespace MyTools
 
 		public void AddAnyTransition(IState to, IPredicate condition)
 		{
-			_anyTransitions.Add(new Transition(GetOrAddNode(to).State, condition));
+			_anyTransitionsSet.Add(new Transition(GetOrAddNode(to).State, condition));
 		}
 
 		private StateNode GetOrAddNode(IState state)
 		{
-			var node = _nodes.GetValueOrDefault(state.GetType());
+			var node = _nodesDictionary.GetValueOrDefault(state.GetType());
 
 			if (node == null)
 			{
 				node = new StateNode(state);
-				_nodes.Add(state.GetType(), node);
+				_nodesDictionary.Add(state.GetType(), node);
 			}
 
 			return node;
@@ -92,17 +92,17 @@ namespace MyTools
 		private class StateNode
 		{
 			public IState State { get; }
-			public HashSet<ITransition> Transitions { get; }
+			public HashSet<ITransition> TransitionsSet { get; }
 
 			public StateNode(IState state)
 			{
 				State = state;
-				Transitions = new HashSet<ITransition>();
+				TransitionsSet = new HashSet<ITransition>();
 			}
 
 			public void AddTransition(IState to, IPredicate condition)
 			{
-				Transitions.Add(new Transition(to, condition));
+				TransitionsSet.Add(new Transition(to, condition));
 			}
 		}
 	}

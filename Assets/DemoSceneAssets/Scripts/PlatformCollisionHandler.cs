@@ -7,7 +7,7 @@ namespace DemoScene
 	{
 		private void OnCollisionEnter(Collision other)
 		{
-			if (other.gameObject.CompareTag(ConstUtils.PLAYER_TAG))
+			if (other.gameObject.CompareTag(ConstUtils.TAG_PLAYER))
 			{
 				// If the contact normal is pointing up, the player has collided with the top of the platform
 				var contact = other.GetContact(0);
@@ -19,7 +19,7 @@ namespace DemoScene
 
 		private void OnCollisionExit(Collision other)
 		{
-			if (other.gameObject.CompareTag(ConstUtils.PLAYER_TAG))
+			if (other.gameObject.CompareTag(ConstUtils.TAG_PLAYER))
 			{
 				other.transform.SetParent(null);
 			}

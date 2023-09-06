@@ -1,15 +1,17 @@
 using UnityEngine;
 using DG.Tweening;
+using KBCore.Refs;
 
 namespace Project
 {
-	public class LevelStartUI : MonoBehaviour
+	public class LevelStartUI : ValidatedMonoBehaviour
 	{
-		[SerializeField] private Transform _handTransform;
+		[Header("References")]
+		[SerializeField, Anywhere] private Transform _handTransform;
+		[SerializeField, Anywhere] private Transform _textTransform;
 		[SerializeField] private Vector3 _moveTo = Vector3.zero;
 		[SerializeField] private float _moveTime = 1f;
 		[SerializeField] private Ease _moveEase = Ease.InOutSine;
-		[SerializeField] private Transform _textTransform;
 		[SerializeField] private float _scaleTo = 1.2f;
 		[SerializeField] private float _scaleTime = 0.5f;
 		[SerializeField] private Ease _scaleEase = Ease.InOutSine;

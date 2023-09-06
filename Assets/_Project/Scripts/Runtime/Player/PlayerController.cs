@@ -8,6 +8,10 @@ namespace Project
 {
 	public class PlayerController : ValidatedMonoBehaviour, ICharacterActions, IDataPersistence
 	{
+		private const float ZERO_F = 0f;
+
+		private static readonly int _Speed = Animator.StringToHash("Speed");
+
 		[Header("References")]
 		[SerializeField, Self] private Rigidbody _rigidbody;
 		[SerializeField, Child] private Animator _animator;
@@ -39,9 +43,6 @@ namespace Project
 		private CountdownTimer _jumpTimer;
 		private CountdownTimer _dashTimer;
 		private StateMachine _stateMachine;
-		private static readonly int Speed = Animator.StringToHash("Speed");
-
-		private const float ZERO_F = 0f;
 
 		private void Awake()
 		{
@@ -115,7 +116,7 @@ namespace Project
 
 		private void UpdateAnimator()
 		{
-			_animator.SetFloat(Speed, _currentSpeed);
+			_animator.SetFloat(_Speed, _currentSpeed);
 		}
 
 		private void FixedUpdate()

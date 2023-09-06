@@ -1,4 +1,3 @@
-using MyTools;
 using UnityEngine;
 
 namespace Project
@@ -12,8 +11,8 @@ namespace Project
 		public override void OnEnter()
 		{
 			// DebugUtils.Log("PlayerLocomotionState.OnEnter");
-			_animator.SetBool(IsJumping, false);
-			_animator.SetBool(IsDashing, false);
+			_animator.SetBool(_IsJumping, false);
+			_animator.SetBool(_IsDashing, false);
 		}
 
 		public override void FixedUpdate()

@@ -9,14 +9,14 @@ namespace Project
 		{
 			DontDestroyOnLoad(gameObject);
 
-			if (PlayerPrefs.GetInt(ConstUtils.FIRST_TIME_PLAYING, 1) == 1)
+			if (PlayerPrefs.GetInt(ConstUtils.PREF_FIRST_TIME_PLAYING, 1) == 1)
 			{
-				PlayerPrefs.SetInt(ConstUtils.FIRST_TIME_PLAYING, 0);
+				PlayerPrefs.SetInt(ConstUtils.PREF_FIRST_TIME_PLAYING, 0);
 				SceneUtils.LoadSpecificScene((int)SceneIndex.SPLASH);
 			}
 			else
 			{
-				SceneUtils.LoadSpecificScene(PlayerPrefs.GetInt(ConstUtils.LAST_PLAYED_SCENE_INDEX, (int)SceneIndex.GAME));
+				SceneUtils.LoadSpecificScene(PlayerPrefs.GetInt(ConstUtils.PREF_LAST_PLAYED_SCENE_INDEX, (int)SceneIndex.GAME));
 			}
 		}
 	}

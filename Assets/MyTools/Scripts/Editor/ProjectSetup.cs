@@ -99,7 +99,7 @@ namespace MyTools
                     Directory.CreateDirectory(fullpath);
                 }
 
-                List<EditorBuildSettingsScene> buildSettingsScenesList = new List<EditorBuildSettingsScene>();
+                List<EditorBuildSettingsScene> buildSettingsScenesList = new();
 
                 foreach (var scene in scenes)
                 {
@@ -124,7 +124,7 @@ namespace MyTools
         private static class Packages
         {
             private static AddRequest Request;
-            private static Queue<string> PackagesToInstall = new();
+            private static readonly Queue<string> PackagesToInstall = new();
 
             public static void InstallPackages(string[] packages)
             {

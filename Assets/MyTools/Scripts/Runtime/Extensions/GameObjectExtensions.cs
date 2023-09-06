@@ -13,7 +13,7 @@ namespace MyTools
         public static T GetOrAdd<T>(this GameObject gameObject) where T : Component
         {
             var component = gameObject.GetComponent<T>();
-            return component != null ? component : gameObject.AddComponent<T>();
+            return component ?? gameObject.AddComponent<T>();
         }
     }
 }

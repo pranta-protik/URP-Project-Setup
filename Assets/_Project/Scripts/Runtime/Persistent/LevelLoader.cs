@@ -6,6 +6,7 @@ namespace Project
 	public class LevelLoader : MonoBehaviour
 	{
 		public static LevelLoader Instance { get; private set; }
+
 		[SerializeField, Min(0)] private int _totalSceneCount;
 		[SerializeField, Min(0)] private int _firstLevelSceneIndex = (int)SceneIndex.GAME;
 
@@ -25,8 +26,8 @@ namespace Project
 
 		public int GetNextSceneIndex()
 		{
-			var nextSceneIndex = PlayerPrefs.GetInt(ConstUtils.LAST_PLAYED_SCENE_INDEX, (int)SceneIndex.GAME);
-			var inGameLevelCount = PlayerPrefs.GetInt(ConstUtils.IN_GAME_LEVEL_COUNT, 1);
+			var nextSceneIndex = PlayerPrefs.GetInt(ConstUtils.PREF_LAST_PLAYED_SCENE_INDEX, (int)SceneIndex.GAME);
+			var inGameLevelCount = PlayerPrefs.GetInt(ConstUtils.PREF_IN_GAME_LEVEL_COUNT, 1);
 
 			if (nextSceneIndex >= _totalSceneCount - 1)
 			{
@@ -37,8 +38,8 @@ namespace Project
 				nextSceneIndex++;
 			}
 
-			PlayerPrefs.SetInt(ConstUtils.LAST_PLAYED_SCENE_INDEX, nextSceneIndex);
-			PlayerPrefs.SetInt(ConstUtils.IN_GAME_LEVEL_COUNT, inGameLevelCount + 1);
+			PlayerPrefs.SetInt(ConstUtils.PREF_LAST_PLAYED_SCENE_INDEX, nextSceneIndex);
+			PlayerPrefs.SetInt(ConstUtils.PREF_IN_GAME_LEVEL_COUNT, inGameLevelCount + 1);
 
 			return nextSceneIndex;
 		}

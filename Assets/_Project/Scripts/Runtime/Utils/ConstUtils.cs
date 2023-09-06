@@ -4,16 +4,15 @@ namespace Project
     {
         #region PlayerPrefs Keys
 
-        public const string FIRST_TIME_PLAYING = "FirstTimePlaying";
-        public const string LAST_PLAYED_SCENE_INDEX = "LastPlayedSceneIndex";
-        public const string IN_GAME_LEVEL_COUNT = "InGameLevelCount";
+        public const string PREF_FIRST_TIME_PLAYING = "FirstTimePlaying";
+        public const string PREF_LAST_PLAYED_SCENE_INDEX = "LastPlayedSceneIndex";
+        public const string PREF_IN_GAME_LEVEL_COUNT = "InGameLevelCount";
 
         #endregion
 
-
         #region Tags
 
-        public const string PLAYER_TAG = "Player";
+        public const string TAG_PLAYER = "Player";
 
         #endregion
     }

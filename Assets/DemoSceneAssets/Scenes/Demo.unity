@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 858318611}
+  m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 1.0177118, g: 1.9083976, b: 1.9207854, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -124,13 +124,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!108 &858318611 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 4290098937374139335, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
-    type: 3}
-  m_PrefabInstance: {fileID: 5093625362263875355}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &5093625362263875355
+--- !u!1001 &7059685521191759762
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -138,65 +132,65 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1628549101654127122, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
-        type: 3}
-      propertyPath: m_Name
-      value: DemoScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 5392657376992966854, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+    - target: {fileID: 4630838930115089043, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5392657376992966854, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+    - target: {fileID: 4630838930115089043, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5392657376992966854, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+    - target: {fileID: 4630838930115089043, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5392657376992966854, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+    - target: {fileID: 4630838930115089043, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5392657376992966854, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+    - target: {fileID: 4630838930115089043, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5392657376992966854, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+    - target: {fileID: 4630838930115089043, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5392657376992966854, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+    - target: {fileID: 4630838930115089043, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5392657376992966854, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+    - target: {fileID: 4630838930115089043, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5392657376992966854, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+    - target: {fileID: 4630838930115089043, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5392657376992966854, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+    - target: {fileID: 4630838930115089043, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5392657376992966854, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+    - target: {fileID: 4630838930115089043, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606930478708376864, guid: 6519a1fc6f79c5342b02df5e462f7ba7,
+        type: 3}
+      propertyPath: m_Name
+      value: DemoScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

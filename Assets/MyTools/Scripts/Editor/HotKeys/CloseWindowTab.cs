@@ -9,6 +9,7 @@ namespace MyTools
         private static void CloseTab()
         {
             var focusedWindow = EditorWindow.focusedWindow;
+
             if (focusedWindow != null)
             {
                 CloseTab(focusedWindow);

@@ -10,17 +10,17 @@ namespace MyTools
         private const float WINDOW_HEIGHT = 500f;
         private const float BUTTON_HEIGHT = 32f;
         private const float VERTICAL_SPACE = 10;
-        private static SceneSetupWindow _sceneSetupWindow;
-        private static GUIStyle _titleLabelStyle;
+        private static SceneSetupWindow _SceneSetupWindow;
+        private static GUIStyle _TitleLabelStyle;
 
         private void OnEnable()
         {
-            _titleLabelStyle = new GUIStyle
+            _TitleLabelStyle = new GUIStyle
             {
                 fontStyle = FontStyle.Bold,
                 alignment = TextAnchor.MiddleCenter
             };
-            _titleLabelStyle.normal.textColor = Color.white;
+            _TitleLabelStyle.normal.textColor = Color.white;
         }
 
         private void OnGUI()
@@ -47,12 +47,12 @@ namespace MyTools
 
             EditorGUILayout.EndVertical();
 
-            if (_sceneSetupWindow) _sceneSetupWindow.Repaint();
+            if (_SceneSetupWindow) _SceneSetupWindow.Repaint();
         }
 
         private static void SetupPersistentScene()
         {
-            GUILayout.Label("Setup Persistent Scene", _titleLabelStyle);
+            GUILayout.Label("Setup Persistent Scene", _TitleLabelStyle);
 
             EditorGUILayout.BeginHorizontal();
 
@@ -73,7 +73,7 @@ namespace MyTools
 
         private static void SetupSplashScene()
         {
-            GUILayout.Label("Setup Splash Scene", _titleLabelStyle);
+            GUILayout.Label("Setup Splash Scene", _TitleLabelStyle);
 
             EditorGUILayout.BeginHorizontal();
 
@@ -94,7 +94,7 @@ namespace MyTools
 
         private static void SetupUIScene()
         {
-            GUILayout.Label("Setup UI Scene", _titleLabelStyle);
+            GUILayout.Label("Setup UI Scene", _TitleLabelStyle);
 
             EditorGUILayout.BeginHorizontal();
 
@@ -115,7 +115,7 @@ namespace MyTools
 
         private static void SetupGameScene()
         {
-            GUILayout.Label("Setup Game Scene", _titleLabelStyle);
+            GUILayout.Label("Setup Game Scene", _TitleLabelStyle);
 
             EditorGUILayout.BeginHorizontal();
 
@@ -136,9 +136,9 @@ namespace MyTools
 
         public static void InitWindow()
         {
-            _sceneSetupWindow = GetWindow<SceneSetupWindow>(true, WINDOW_TITLE, true);
-            _sceneSetupWindow.minSize = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
-            _sceneSetupWindow.Show();
+            _SceneSetupWindow = GetWindow<SceneSetupWindow>(true, WINDOW_TITLE, true);
+            _SceneSetupWindow.minSize = new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
+            _SceneSetupWindow.Show();
         }
     }
 }

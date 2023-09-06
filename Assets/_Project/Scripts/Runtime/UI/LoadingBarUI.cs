@@ -7,6 +7,7 @@ namespace Project
 {
 	public class LoadingBarUI : ValidatedMonoBehaviour
 	{
+		[Header("References")]
 		[SerializeField, Anywhere] private Image _fillMask;
 		[SerializeField, Range(0f, 10f)] private float _loadingDuration = 3f;
 

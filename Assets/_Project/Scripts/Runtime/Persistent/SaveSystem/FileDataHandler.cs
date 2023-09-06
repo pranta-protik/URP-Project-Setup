@@ -7,11 +7,12 @@ namespace Project
 {
 	public class FileDataHandler
 	{
+		private const string ENCRYPTION_CODE_WORD = "ONEPIECE";
+		private const string BACKUP_FILE_EXTENSION = ".bak";
+
 		private readonly string _dataDirPath = "";
 		private readonly string _dataFileName = "";
 		private readonly bool _useEncryption = false;
-		private const string ENCRYPTION_CODE_WORD = "ONEPIECE";
-		private const string BACKUP_FILE_EXTENSION = ".bak";
 
 		public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)
 		{

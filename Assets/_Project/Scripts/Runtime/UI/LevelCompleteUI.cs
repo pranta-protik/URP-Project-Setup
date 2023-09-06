@@ -1,12 +1,14 @@
 using DG.Tweening;
+using KBCore.Refs;
 using MyTools;
 using UnityEngine;
 
 namespace Project
 {
-	public class LevelCompleteUI : MonoBehaviour
+	public class LevelCompleteUI : ValidatedMonoBehaviour
 	{
-		[SerializeField] private Transform _buttonTransform;
+		[Header("References")]
+		[SerializeField, Anywhere] private Transform _buttonTransform;
 		[SerializeField] private float _ScaleTo = 1.1f;
 		[SerializeField] private float _scaleTime = 0.5f;
 		[SerializeField] private Ease _ease = Ease.InOutSine;
