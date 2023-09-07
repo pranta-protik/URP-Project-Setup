@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace Project
+namespace Project.IS
 {
 	public abstract class InventoryItemObject : MonoBehaviour
 	{
 		[Header("References")]
-		[SerializeField] private InventoryItemData _itemData;
-		public InventoryItemData ItemData => _itemData;
+		[SerializeField] private InventoryItemDataSO _itemData;
+		public InventoryItemDataSO ItemData => _itemData;
 		public bool IsPickedUp { get; set; }
 
 		public void HandleItemPickup()

@@ -1,9 +1,9 @@
 using DG.Tweening;
 using KBCore.Refs;
-using MyTools;
+using MyTools.Utils;
 using UnityEngine;
 
-namespace Project
+namespace Project.UI
 {
 	public class LevelCompleteUI : ValidatedMonoBehaviour
 	{

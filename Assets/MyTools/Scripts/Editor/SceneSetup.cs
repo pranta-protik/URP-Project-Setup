@@ -1,11 +1,11 @@
-using Project;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
 using UnityEditor;
 using System.IO;
+using MyTools.Settings;
 
-namespace MyTools
+namespace MyTools.EditorScript
 {
     public static class SceneSetup
     {
@@ -147,7 +147,7 @@ namespace MyTools
 
         private static void SetupLightingSettings(string settingsPath, string scenePath)
         {
-            var settings = (LightingSettings)AssetDatabase.LoadAssetAtPath(settingsPath, typeof(LightingSettings));
+            var settings = (LightingSettingsSO)AssetDatabase.LoadAssetAtPath(settingsPath, typeof(LightingSettingsSO));
 
             RenderSettings.skybox = settings.skyboxMat;
 

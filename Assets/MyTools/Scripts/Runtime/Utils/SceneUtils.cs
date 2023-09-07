@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MyTools
+namespace MyTools.Utils
 {
     public static class SceneUtils
     {

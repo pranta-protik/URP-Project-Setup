@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyTools
+namespace MyTools.ES
 {
-	public abstract class EventChannel<T> : ScriptableObject
+	public abstract class EventChannelSO<T> : ScriptableObject
 	{
 		private readonly HashSet<EventListener<T>> _observersSet = new();
 
@@ -22,5 +22,5 @@ namespace MyTools
 	public readonly struct Empty { }
 
 	[CreateAssetMenu(menuName = "ScriptableObjects/Events/EventChannel")]
-	public class EventChannel : EventChannel<Empty> { }
+	public class EventChannelSO : EventChannelSO<Empty> { }
 }

@@ -1,9 +1,10 @@
-using MyTools;
 using UnityEngine;
 using UnityEngine.UI;
 using KBCore.Refs;
+using MyTools.Utils;
+using Project.Utils;
 
-namespace Project
+namespace Project.UI
 {
 	public class LoadingBarUI : ValidatedMonoBehaviour
 	{

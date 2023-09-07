@@ -1,17 +1,17 @@
 using System;
 using System.IO;
-using MyTools;
+using MyTools.Utils;
 using UnityEngine;
 
-namespace Project
+namespace Project.Persistent.SaveSystem
 {
 	public class FileDataHandler
 	{
 		private const string ENCRYPTION_CODE_WORD = "ONEPIECE";
 		private const string BACKUP_FILE_EXTENSION = ".bak";
 
-		private readonly string _dataDirPath = "";
-		private readonly string _dataFileName = "";
+		private readonly string _dataDirPath;
+		private readonly string _dataFileName;
 		private readonly bool _useEncryption = false;
 
 		public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)

@@ -25,7 +25,7 @@ namespace DemoScene
 
 		private void OnCollisionEnter(Collision other)
 		{
-			if (other.gameObject.TryGetComponent<ICharacterActions>(out ICharacterActions characterActions))
+			if (other.gameObject.TryGetComponent(out ICharacterActions characterActions))
 			{
 				OnJumpPadInteraction?.Invoke();
 

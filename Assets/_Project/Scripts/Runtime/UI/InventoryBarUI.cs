@@ -1,7 +1,8 @@
 using KBCore.Refs;
+using Project.IS;
 using UnityEngine;
 
-namespace Project
+namespace Project.UI
 {
 	public class InventoryBarUI : ValidatedMonoBehaviour
 	{

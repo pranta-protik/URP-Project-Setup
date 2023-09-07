@@ -2,9 +2,9 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace MyTools
+namespace MyTools.EditorScript
 {
-    public class LockInspector
+    public static class LockInspector
     {
         [MenuItem("Edit/Lock Inspector %l")]
         public static void Lock()

@@ -1,9 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MyTools
+namespace MyTools.EditorScript
 {
-    public class ForceSaveSceneAndProject
+    public static class ForceSaveSceneAndProject
     {
         [MenuItem("File/Save Scene And Project %#&s")]
         public static void FunctionForceSaveSceneAndProject()

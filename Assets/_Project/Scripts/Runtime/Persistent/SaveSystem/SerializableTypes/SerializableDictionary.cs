@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using MyTools;
+using MyTools.Utils;
 using UnityEngine;
 
-namespace Project
+namespace Project.Persistent.SaveSystem
 {
 	[Serializable]
 	public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
@@ -33,7 +33,7 @@ namespace Project
 			{
 				DebugUtils.LogError("Tried to deserialize a SerializableDictionary, but the amount of keys ("
 				+ _keysList.Count + ") does not match the number of values ("
-				+ _valuesList.Count + ") which indicates that somethins went wrong!");
+				+ _valuesList.Count + ") which indicates that something went wrong!");
 
 			}
 

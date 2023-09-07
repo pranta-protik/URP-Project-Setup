@@ -1,7 +1,9 @@
-using MyTools;
+using MyTools.Utils;
+using Project.Persistent;
+using Project.Persistent.SaveSystem;
 using UnityEngine.Events;
 
-namespace Project
+namespace Project.Managers
 {
 	public class GameManager : Singleton<GameManager>
 	{

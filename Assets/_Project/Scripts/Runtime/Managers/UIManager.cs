@@ -1,17 +1,19 @@
 using System;
 using System.Collections;
-using MyTools;
+using MyTools.ES;
+using MyTools.Utils;
+using Project.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Project
+namespace Project.Managers
 {
 	public class UIManager : Singleton<UIManager>
 	{
 		[Header("References")]
-		[SerializeField] private EventChannel _levelStartChannel;
-		[SerializeField] private IntEventChannel _levelCompleteChannel;
-		[SerializeField] private EventChannel _levelFailChannel;
+		[SerializeField] private EventChannelSO levelStartChannel;
+		[SerializeField] private IntEventChannelSO levelCompleteChannel;
+		[SerializeField] private EventChannelSO levelFailChannel;
 		[SerializeField, Range(0f, 15f)] private float _uiScreenDelay = 2f;
 
 		private void Start()
@@ -35,17 +37,17 @@ namespace Project
 
 		private void GameManager_OnLevelStarted()
 		{
-			_levelStartChannel?.Invoke(new Empty());
+			levelStartChannel.Invoke(new Empty());
 		}
 
 		private void GameManager_OnLevelCompleted(int sceneIndex)
 		{
-			StartCoroutine(DelayAction(() => _levelCompleteChannel?.Invoke(sceneIndex)));
+			StartCoroutine(DelayAction(() => levelCompleteChannel.Invoke(sceneIndex)));
 		}
 
 		private void GameManager_OnLevelFailed()
 		{
-			StartCoroutine(DelayAction(() => _levelFailChannel?.Invoke(new Empty())));
+			StartCoroutine(DelayAction(() => levelFailChannel.Invoke(new Empty())));
 		}
 
 		private IEnumerator DelayAction(Action action)

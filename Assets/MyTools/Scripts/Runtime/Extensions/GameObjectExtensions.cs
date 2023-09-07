@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace MyTools
+namespace MyTools.Extensions
 {
     public static class GameObjectExtensions
     {
         /// <summary>
-        /// Returns component if found otherwise adds it to the gameobject
+        /// Returns component if found otherwise adds it to the game object
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="gameObject"></param>
@@ -13,7 +13,7 @@ namespace MyTools
         public static T GetOrAdd<T>(this GameObject gameObject) where T : Component
         {
             var component = gameObject.GetComponent<T>();
-            return component ?? gameObject.AddComponent<T>();
+            return component ? component : gameObject.AddComponent<T>();
         }
     }
 }

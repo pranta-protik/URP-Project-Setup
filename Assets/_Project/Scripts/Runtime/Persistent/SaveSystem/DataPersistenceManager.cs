@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using MyTools;
+using MyTools.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Project
+namespace Project.Persistent.SaveSystem
 {
 	public class DataPersistenceManager : MonoBehaviour
 	{

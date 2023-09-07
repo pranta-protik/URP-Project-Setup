@@ -1,6 +1,7 @@
+using Project.Persistent;
 using UnityEditor;
 
-namespace Project
+namespace Project.EditorScript
 {
 	[CustomEditor(typeof(LevelLoader))]
 	public class LevelLoaderEditor : Editor

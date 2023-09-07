@@ -1,14 +1,14 @@
 using System;
 
-namespace Project
+namespace Project.IS
 {
 	[Serializable]
 	public class InventoryItem
 	{
-		public InventoryItemData ItemData { get; private set; }
+		public InventoryItemDataSO ItemData { get; private set; }
 		public int StackSize { get; private set; }
 
-		public InventoryItem(InventoryItemData itemData)
+		public InventoryItem(InventoryItemDataSO itemData)
 		{
 			ItemData = itemData;
 			AddToStack();

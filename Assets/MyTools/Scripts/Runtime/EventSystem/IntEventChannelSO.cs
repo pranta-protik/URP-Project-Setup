@@ -1,7 +1,7 @@
 using UnityEngine;
 
-namespace MyTools
+namespace MyTools.ES
 {
 	[CreateAssetMenu(menuName = "ScriptableObjects/Events/IntEventChannel")]
-	public class IntEventChannel : EventChannel<int> { }
+	public class IntEventChannelSO : EventChannelSO<int> { }
 }

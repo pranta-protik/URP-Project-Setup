@@ -1,7 +1,8 @@
+using Project.Managers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Project
+namespace Project.UI
 {
 	public class LevelStartTriggerUI : MonoBehaviour, IPointerDownHandler
 	{

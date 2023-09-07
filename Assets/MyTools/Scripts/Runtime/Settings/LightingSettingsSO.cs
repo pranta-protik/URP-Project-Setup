@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace MyTools
+namespace MyTools.Settings
 {
 	[CreateAssetMenu(fileName = "LightingSettings", menuName = "ScriptableObjects/LightingSettings")]
-	public class LightingSettings : ScriptableObject
+	public class LightingSettingsSO : ScriptableObject
 	{
 		public Material skyboxMat;
 	}

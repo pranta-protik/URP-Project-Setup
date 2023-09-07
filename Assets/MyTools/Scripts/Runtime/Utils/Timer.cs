@@ -1,6 +1,6 @@
 using System;
 
-namespace MyTools
+namespace MyTools.Utils
 {
     public abstract class Timer
     {

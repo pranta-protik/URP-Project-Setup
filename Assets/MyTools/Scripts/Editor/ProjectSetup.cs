@@ -2,11 +2,12 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
+using MyTools.Utils;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 using UnityEditor.SceneManagement;
 
-namespace MyTools
+namespace MyTools.EditorScript
 {
     public static class ProjectSetup
     {

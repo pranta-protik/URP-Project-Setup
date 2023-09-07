@@ -1,25 +1,37 @@
 using System.Collections.Generic;
-using MyTools;
+using MyTools.Utils;
+using Project.Persistent.SaveSystem;
+using UnityEngine;
 using UnityEngine.Events;
 
-namespace Project
+namespace Project.IS
 {
-	public class InventorySystem : Singleton<InventorySystem>
+	public class InventorySystem : Singleton<InventorySystem>, IDataPersistence
 	{
 		public event UnityAction OnInventoryUpdated;
 
-		private Dictionary<InventoryItemData, InventoryItem> _inventoryItemsDictionary;
+		[SerializeField] private InventoryItemDataListSO _inventoryItemDataList;
+
+		private Dictionary<string, InventoryItemDataSO> _inventoryItemDataDictionary;
+		private Dictionary<InventoryItemDataSO, InventoryItem> _inventoryItemsDictionary;
 		public List<InventoryItem> InventoryItemsList { get; private set; }
 
 		protected override void OnAwake()
 		{
 			base.OnAwake();
 
+			_inventoryItemDataDictionary = new Dictionary<string, InventoryItemDataSO>();
+
+			foreach (var itemData in _inventoryItemDataList.itemDataList)
+			{
+				_inventoryItemDataDictionary.Add(itemData.name, itemData);
+			}
+
+			_inventoryItemsDictionary = new Dictionary<InventoryItemDataSO, InventoryItem>();
 			InventoryItemsList = new List<InventoryItem>();
-			_inventoryItemsDictionary = new Dictionary<InventoryItemData, InventoryItem>();
 		}
 
-		public InventoryItem Get(InventoryItemData itemData)
+		public InventoryItem Get(InventoryItemDataSO itemData)
 		{
 			if (_inventoryItemsDictionary.TryGetValue(itemData, out InventoryItem item))
 			{
@@ -29,7 +41,7 @@ namespace Project
 			return null;
 		}
 
-		public void Add(InventoryItemData itemData)
+		public void Add(InventoryItemDataSO itemData)
 		{
 			if (_inventoryItemsDictionary.TryGetValue(itemData, out InventoryItem item))
 			{
@@ -45,7 +57,7 @@ namespace Project
 			OnInventoryUpdated?.Invoke();
 		}
 
-		public void Remove(InventoryItemData itemData)
+		public void Remove(InventoryItemDataSO itemData)
 		{
 			if (_inventoryItemsDictionary.TryGetValue(itemData, out InventoryItem item))
 			{
@@ -59,6 +71,15 @@ namespace Project
 			}
 
 			OnInventoryUpdated?.Invoke();
+		}
+
+		public void LoadData(GameData gameData)
+		{
+		}
+
+		public void SaveData(GameData gameData)
+		{
+
 		}
 	}
 }

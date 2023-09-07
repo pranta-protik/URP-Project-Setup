@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MyTools
+namespace MyTools.Utils
 {
     public static class DebugUtils
     {

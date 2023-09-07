@@ -1,4 +1,4 @@
-namespace Project
+namespace Project.Persistent.SaveSystem
 {
 	public interface IDataPersistence
 	{

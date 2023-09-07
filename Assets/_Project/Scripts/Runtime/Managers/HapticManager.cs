@@ -1,8 +1,8 @@
 using DemoScene;
-using MyTools;
+using MyTools.Utils;
 using UnityEngine;
 
-namespace Project
+namespace Project.Managers
 {
 	public class HapticManager : MonoBehaviour
 	{

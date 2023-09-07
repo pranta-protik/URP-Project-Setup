@@ -1,7 +1,8 @@
-using MyTools;
+using MyTools.Utils;
+using Project.Utils;
 using UnityEngine;
 
-namespace Project
+namespace Project.Persistent
 {
 	public class LevelLoader : MonoBehaviour
 	{

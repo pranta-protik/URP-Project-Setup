@@ -1,6 +1,6 @@
 using TMPro;
 
-namespace MyTools
+namespace MyTools.Extensions
 {
     public static class TextMeshProExtensions
     {

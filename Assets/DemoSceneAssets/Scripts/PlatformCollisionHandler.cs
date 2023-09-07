@@ -1,4 +1,4 @@
-using Project;
+using Project.Utils;
 using UnityEngine;
 
 namespace DemoScene

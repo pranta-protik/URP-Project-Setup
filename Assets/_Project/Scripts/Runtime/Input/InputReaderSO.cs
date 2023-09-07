@@ -3,10 +3,10 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using static PlayerInputActions;
 
-namespace Project
+namespace Project.InputSystem
 {
 	[CreateAssetMenu(fileName = "InputReader", menuName = "ScriptableObjects/InputReader")]
-	public class InputReader : ScriptableObject, IPlayerActions
+	public class InputReaderSO : ScriptableObject, IPlayerActions
 	{
 		public event UnityAction<Vector2> Move = delegate { };
 		public event UnityAction<bool> Jump = delegate { };

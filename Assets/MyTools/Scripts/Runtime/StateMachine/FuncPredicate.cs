@@ -1,6 +1,6 @@
 using System;
 
-namespace MyTools
+namespace MyTools.SM
 {
 	public class FuncPredicate : IPredicate
 	{

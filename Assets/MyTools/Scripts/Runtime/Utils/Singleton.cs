@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MyTools
+namespace MyTools.Utils
 {
     public class Singleton<T> : MonoBehaviour where T : Component
     {

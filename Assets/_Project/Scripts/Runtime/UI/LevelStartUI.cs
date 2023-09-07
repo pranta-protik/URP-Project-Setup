@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using KBCore.Refs;
 
-namespace Project
+namespace Project.UI
 {
 	public class LevelStartUI : ValidatedMonoBehaviour
 	{

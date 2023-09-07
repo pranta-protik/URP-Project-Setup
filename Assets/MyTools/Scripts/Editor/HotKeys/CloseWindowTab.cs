@@ -1,9 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MyTools
+namespace MyTools.EditorScript
 {
-    public class CloseWindowTab
+    public static class CloseWindowTab
     {
         [MenuItem("File/Close Window Tab %w")]
         private static void CloseTab()

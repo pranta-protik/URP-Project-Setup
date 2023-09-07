@@ -1,21 +1,21 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MyTools
+namespace MyTools.ES
 {
 	public abstract class EventListener<T> : MonoBehaviour
 	{
-		[SerializeField] private EventChannel<T> _eventChannel;
+		[SerializeField] private EventChannelSO<T> eventChannel;
 		[SerializeField] private UnityEvent<T> _unityEvent;
 
 		protected void Awake()
 		{
-			_eventChannel.Register(this);
+			eventChannel.Register(this);
 		}
 
 		private void OnDestroy()
 		{
-			_eventChannel.Unregister(this);
+			eventChannel.Unregister(this);
 		}
 
 		public void Raise(T value)

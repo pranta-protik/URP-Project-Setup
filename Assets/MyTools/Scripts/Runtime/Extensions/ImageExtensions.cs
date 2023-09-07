@@ -1,6 +1,6 @@
 using UnityEngine.UI;
 
-namespace MyTools
+namespace MyTools.Extensions
 {
     public static class ImageExtensions
     {

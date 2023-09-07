@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MyTools
+namespace MyTools.EditorScript
 {
     public class SceneSetupWindow : EditorWindow
     {

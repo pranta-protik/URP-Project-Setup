@@ -1,4 +1,4 @@
-namespace MyTools
+namespace MyTools.SM
 {
 	public interface IPredicate
 	{

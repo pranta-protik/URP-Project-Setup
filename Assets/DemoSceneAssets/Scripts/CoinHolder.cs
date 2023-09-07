@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using MyTools;
-using Project;
+using MyTools.Utils;
+using Project.IS;
+using Project.Managers;
+using Project.Persistent.SaveSystem;
 using UnityEngine;
 
 #if UNITY_EDITOR

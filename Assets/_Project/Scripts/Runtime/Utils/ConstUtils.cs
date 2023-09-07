@@ -1,4 +1,4 @@
-namespace Project
+namespace Project.Utils
 {
     public static class ConstUtils
     {

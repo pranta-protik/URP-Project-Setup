@@ -1,9 +1,10 @@
 using KBCore.Refs;
+using Project.IS;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project
+namespace Project.UI
 {
 	public class ItemSlotUI : ValidatedMonoBehaviour
 	{

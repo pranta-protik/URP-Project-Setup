@@ -1,4 +1,4 @@
-namespace Project
+namespace Project.Utils
 {
     public enum SceneIndex
     {

@@ -1,6 +1,6 @@
 using UnityEditor;
 
-namespace MyTools
+namespace MyTools.EditorScript
 {
     public static class EditorUtils
     {
