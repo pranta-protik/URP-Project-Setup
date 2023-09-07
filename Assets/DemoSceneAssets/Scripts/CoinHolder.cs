@@ -42,8 +42,6 @@ namespace DemoScene
 						var collectableCoin = _collectableCoinsList[keyValuePair.Key];
 						collectableCoin.IsPickedUp = true;
 						collectableCoin.gameObject.SetActive(false);
-
-						InventorySystem.Instance.Add(collectableCoin.ItemData);
 					}
 				}
 			}
@@ -56,24 +54,23 @@ namespace DemoScene
 				gameData.dictionaryOfcoinHolderDictionary.Remove(SceneUtils.GetActiveSceneIndex());
 			}
 
-			if (GameManager.Instance.CurrentGameState != GameManager.GameState.GameOver)
+			if (GameManager.Instance.IsGameOver()) return;
+
+			SerializableDictionary<int, bool> coinHolderDictionary = new();
+
+			for (var i = 0; i < _collectableCoinsList.Count; i++)
 			{
-				SerializableDictionary<int, bool> coinHolderDictionary = new();
-
-				for (var i = 0; i < _collectableCoinsList.Count; i++)
+				if (_collectableCoinsList[i].IsPickedUp)
 				{
-					if (_collectableCoinsList[i].IsPickedUp)
-					{
-						coinHolderDictionary.Add(i, true);
-					}
-					else
-					{
-						coinHolderDictionary.Add(i, false);
-					}
+					coinHolderDictionary.Add(i, true);
 				}
-
-				gameData.dictionaryOfcoinHolderDictionary.Add(SceneUtils.GetActiveSceneIndex(), coinHolderDictionary);
+				else
+				{
+					coinHolderDictionary.Add(i, false);
+				}
 			}
+
+			gameData.dictionaryOfcoinHolderDictionary.Add(SceneUtils.GetActiveSceneIndex(), coinHolderDictionary);
 		}
 	}
 }

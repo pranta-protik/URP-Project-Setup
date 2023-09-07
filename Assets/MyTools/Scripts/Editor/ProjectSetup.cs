@@ -22,7 +22,7 @@ namespace MyTools.EditorScript
             var rootPath = "_Project/Scenes";
             EditorBuildSettings.scenes = Scenes.CreateDefault(rootPath, scenes);
 
-            DebugUtils.Log("Scenes added to editor build settings!");
+            DebugUtils.Log("Scenes added to editor build settings.");
 
             EditorSceneManager.OpenScene("Assets/" + rootPath + "/" + scenes[0] + ".unity");
 
@@ -167,7 +167,7 @@ namespace MyTools.EditorScript
                     }
                     else
                     {
-                        DebugUtils.Log("All packages installed");
+                        DebugUtils.Log("All packages installed.");
                     }
                 }
             }

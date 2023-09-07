@@ -11,6 +11,7 @@ namespace Project.UI
 		private void Start()
 		{
 			InventorySystem.Instance.OnInventoryUpdated += InventorySystem_OnInventoryUpdated;
+			InventorySystem_OnInventoryUpdated();
 		}
 
 		private void OnDestroy()

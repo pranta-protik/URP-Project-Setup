@@ -13,7 +13,7 @@ namespace MyTools.EditorScript
         {
             if (!File.Exists(Path.Combine(Application.dataPath, relativePath)))
             {
-                EditorUtils.DisplayDialogBox("Error", $"{relativePath} scene not found!");
+                EditorUtils.DisplayDialogBox("Error!", $"{relativePath} scene not found.");
                 return false;
             }
 
@@ -24,7 +24,7 @@ namespace MyTools.EditorScript
 
             if (SceneManager.GetActiveScene().isDirty)
             {
-                if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Do you want to save the changes?\nYour changes will be lost if not saved!"))
+                if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Do you want to save the changes?\nYour changes will be lost if not saved."))
                 {
                     ForceSaveSceneAndProject.FunctionForceSaveSceneAndProject();
                     EditorSceneManager.OpenScene("Assets/" + relativePath);
@@ -75,7 +75,7 @@ namespace MyTools.EditorScript
                     return;
                 }
 
-                if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Are you sure you want to setup splash scene?\nAll existing data will be erased!"))
+                if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Are you sure you want to setup splash scene?\nAll existing data will be erased."))
                 {
                     SetupAndSaveUsingPrefab(prefabPath, "SplashUI");
                 }
@@ -94,7 +94,7 @@ namespace MyTools.EditorScript
                     return;
                 }
 
-                if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Are you sure you want to setup UI scene?\nAll existing data will be erased!"))
+                if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Are you sure you want to setup UI scene?\nAll existing data will be erased."))
                 {
                     SetupAndSaveUsingPrefab(prefabPath, "LevelUI");
                 }
@@ -116,7 +116,7 @@ namespace MyTools.EditorScript
                     return;
                 }
 
-                if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Are you sure you want to setup Game scene?\nAll existing data will be erased!"))
+                if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Are you sure you want to setup Game scene?\nAll existing data will be erased."))
                 {
                     SetupAndSaveUsingPrefab(prefabPath, "DemoScene");
                     SetupLightingSettings(lightingSettingsPath, relativePath);
@@ -130,7 +130,7 @@ namespace MyTools.EditorScript
 
             if (!prefab)
             {
-                EditorUtils.DisplayDialogBox("Error", $"Unable to find the {prefabName} prefab!");
+                EditorUtils.DisplayDialogBox("Error!", $"Unable to find the {prefabName} prefab.");
                 return;
             }
 
@@ -160,7 +160,7 @@ namespace MyTools.EditorScript
                 }
             }
 
-            if (EditorUtils.DisplayDialogBoxWithOptions("Generate Lightmap!", "Do you want to generate lightmap for this scene?"))
+            if (EditorUtils.DisplayDialogBoxWithOptions("Generate Lightmap", "Do you want to generate lightmap for this scene?"))
             {
                 Lightmapping.BakeAsync();
 
@@ -191,7 +191,7 @@ namespace MyTools.EditorScript
                 return spawnedPrefab;
             }
 
-            EditorUtils.DisplayDialogBox("Error", $"Unable to find the {prefabName} prefab!");
+            EditorUtils.DisplayDialogBox("Error!", $"Unable to find the {prefabName} prefab.");
             return null;
         }
 

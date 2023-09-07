@@ -380,7 +380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headerSettings:
     headerText: Lighting
-    headerColor: {r: 0.32156864, g: 0.70980394, b: 0.6745098, a: 1}
+    headerColor: {r: 0.33333334, g: 0.73333335, b: 0.6901961, a: 1}
     textAlignmentOptions: 0
     fontStyleOptions: 0
     fontSize: 12
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headerSettings:
     headerText: UI
-    headerColor: {r: 0.32156864, g: 0.70980394, b: 0.6745098, a: 1}
+    headerColor: {r: 0.33333334, g: 0.73333335, b: 0.6901961, a: 1}
     textAlignmentOptions: 0
     fontStyleOptions: 0
     fontSize: 12
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headerSettings:
     headerText: Camera System
-    headerColor: {r: 0.32156864, g: 0.70980394, b: 0.6745098, a: 1}
+    headerColor: {r: 0.33333334, g: 0.73333335, b: 0.6901961, a: 1}
     textAlignmentOptions: 0
     fontStyleOptions: 0
     fontSize: 12
@@ -678,7 +678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headerSettings:
     headerText: Managers
-    headerColor: {r: 0.32156864, g: 0.70980394, b: 0.6745098, a: 1}
+    headerColor: {r: 0.33333334, g: 0.73333335, b: 0.6901961, a: 1}
     textAlignmentOptions: 0
     fontStyleOptions: 0
     fontSize: 12
@@ -729,10 +729,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dontDestroyOnLoad: 0
-  _levelStartChannel: {fileID: 11400000, guid: c1a8a7527aa52ed44ae12ce6a4c12575, type: 2}
-  _levelCompleteChannel: {fileID: 11400000, guid: 44cd26bc086b0ab4a80f774b087757b1,
+  levelStartChannel: {fileID: 11400000, guid: c1a8a7527aa52ed44ae12ce6a4c12575, type: 2}
+  levelCompleteChannel: {fileID: 11400000, guid: 44cd26bc086b0ab4a80f774b087757b1,
     type: 2}
-  _levelFailChannel: {fileID: 11400000, guid: 4e9cc1a3e7b07ca4a9dbf726749ecaf1, type: 2}
+  levelFailChannel: {fileID: 11400000, guid: 4e9cc1a3e7b07ca4a9dbf726749ecaf1, type: 2}
   _uiScreenDelay: 2
 --- !u!1 &2804405100901055947
 GameObject:
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headerSettings:
     headerText: Level Assets
-    headerColor: {r: 0.32156864, g: 0.70980394, b: 0.6745098, a: 1}
+    headerColor: {r: 0.33333334, g: 0.73333335, b: 0.6901961, a: 1}
     textAlignmentOptions: 0
     fontStyleOptions: 0
     fontSize: 12
@@ -2451,7 +2451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headerSettings:
     headerText: Post Processing
-    headerColor: {r: 0.32156864, g: 0.70980394, b: 0.6745098, a: 1}
+    headerColor: {r: 0.33333334, g: 0.73333335, b: 0.6901961, a: 1}
     textAlignmentOptions: 0
     fontStyleOptions: 0
     fontSize: 12
@@ -3180,7 +3180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headerSettings:
     headerText: Player
-    headerColor: {r: 0.32156864, g: 0.70980394, b: 0.6745098, a: 1}
+    headerColor: {r: 0.33333334, g: 0.73333335, b: 0.6901961, a: 1}
     textAlignmentOptions: 0
     fontStyleOptions: 0
     fontSize: 12
@@ -3538,6 +3538,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dontDestroyOnLoad: 0
+  _inventoryItemDataList: {fileID: 11400000, guid: 06e3c7b2cfb0ac14b95a7cc1f65bff4b,
+    type: 2}
 --- !u!1 &8059011629102202591
 GameObject:
   m_ObjectHideFlags: 0
@@ -3584,7 +3586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headerSettings:
     headerText: Persistent Data
-    headerColor: {r: 0.32156864, g: 0.70980394, b: 0.6745098, a: 1}
+    headerColor: {r: 0.33333334, g: 0.73333335, b: 0.6901961, a: 1}
     textAlignmentOptions: 0
     fontStyleOptions: 0
     fontSize: 12

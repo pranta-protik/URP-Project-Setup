@@ -45,6 +45,8 @@ namespace Project.Persistent.SaveSystem
 
 		private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 		{
+			if (mode == LoadSceneMode.Additive) return;
+
 			_dataPersistenceObjectsList = FindAllDataPersistenceObjects();
 			LoadGame();
 		}

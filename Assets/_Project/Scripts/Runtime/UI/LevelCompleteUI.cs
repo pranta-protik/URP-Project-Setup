@@ -33,6 +33,6 @@ namespace Project.UI
 		}
 
 		public void SetNextSceneIndex(int sceneIndex) => _nextSceneIndex = sceneIndex;
-		public void LoadNextScene() => SceneUtils.LoadSpecificScene(_nextSceneIndex);
+		public void OnNextButtonClick() => SceneUtils.LoadSpecificScene(_nextSceneIndex);
 	}
 }

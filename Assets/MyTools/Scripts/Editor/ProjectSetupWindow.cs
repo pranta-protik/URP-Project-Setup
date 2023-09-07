@@ -115,7 +115,7 @@ namespace MyTools.EditorScript
                 }
                 catch
                 {
-                    Debug.LogError(path + " not found!");
+                    Debug.LogError(path + " not found.");
                 }
             }
 
@@ -171,7 +171,7 @@ namespace MyTools.EditorScript
                 }
                 catch
                 {
-                    Debug.LogError(path + " not found!");
+                    Debug.LogError(path + " not found.");
                 }
             }
 
@@ -225,7 +225,7 @@ namespace MyTools.EditorScript
                 }
                 catch
                 {
-                    Debug.LogError(path + " not found!");
+                    Debug.LogError(path + " not found.");
                 }
             }
 
@@ -279,7 +279,7 @@ namespace MyTools.EditorScript
                 }
                 catch
                 {
-                    Debug.LogError(path + " not found!");
+                    Debug.LogError(path + " not found.");
                 }
             }
 
@@ -358,7 +358,7 @@ namespace MyTools.EditorScript
                 }
                 catch
                 {
-                    Debug.LogError(path + " not found!");
+                    Debug.LogError(path + " not found.");
                 }
             }
 
@@ -437,7 +437,7 @@ namespace MyTools.EditorScript
                 }
                 catch
                 {
-                    Debug.LogError(path + " not found!");
+                    Debug.LogError(path + " not found.");
                 }
             }
 
@@ -468,7 +468,7 @@ namespace MyTools.EditorScript
             }
             catch
             {
-                Debug.LogError(path + " not found!");
+                Debug.LogError(path + " not found.");
                 return null;
             }
         }
@@ -481,7 +481,7 @@ namespace MyTools.EditorScript
             }
             catch
             {
-                Debug.LogError(path + " not found!");
+                Debug.LogError(path + " not found.");
             }
         }
 

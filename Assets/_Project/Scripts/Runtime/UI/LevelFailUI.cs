@@ -31,6 +31,6 @@ namespace Project.UI
 			_buttonTransform.localScale = _initialButtonScale;
 		}
 
-		public void ReloadScene() => SceneUtils.ReloadScene();
+		public void OnRetryButtonClick() => SceneUtils.ReloadScene();
 	}
 }

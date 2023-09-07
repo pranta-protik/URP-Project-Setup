@@ -207,10 +207,9 @@ namespace Project
 				gameData.playerPositionDictionary.Remove(SceneUtils.GetActiveSceneIndex());
 			}
 
-			if (GameManager.Instance.CurrentGameState != GameManager.GameState.GameOver)
-			{
-				gameData.playerPositionDictionary.Add(SceneUtils.GetActiveSceneIndex(), transform.position);
-			}
+			if (GameManager.Instance.IsGameOver()) return;
+
+			gameData.playerPositionDictionary.Add(SceneUtils.GetActiveSceneIndex(), transform.position);
 		}
 	}
 }

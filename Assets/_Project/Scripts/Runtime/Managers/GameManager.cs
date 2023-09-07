@@ -11,7 +11,8 @@ namespace Project.Managers
 		{
 			Waiting,
 			Running,
-			GameOver
+			Completed,
+			Failed
 		}
 
 		public event UnityAction OnLevelStarted;
@@ -34,16 +35,18 @@ namespace Project.Managers
 
 		public void LevelCompleted()
 		{
-			CurrentGameState = GameState.GameOver;
+			CurrentGameState = GameState.Completed;
 			OnLevelCompleted?.Invoke(LevelLoader.Instance.GetNextSceneIndex());
 			DataPersistenceManager.Instance.SaveGame();
 		}
 
 		public void LevelFailed()
 		{
-			CurrentGameState = GameState.GameOver;
+			CurrentGameState = GameState.Failed;
 			OnLevelFailed?.Invoke();
 			DataPersistenceManager.Instance.SaveGame();
 		}
+
+		public bool IsGameOver() => CurrentGameState == GameState.Completed || CurrentGameState == GameState.Failed;
 	}
 }

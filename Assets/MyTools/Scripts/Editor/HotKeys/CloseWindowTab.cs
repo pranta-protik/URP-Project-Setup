@@ -1,5 +1,5 @@
+using MyTools.Utils;
 using UnityEditor;
-using UnityEngine;
 
 namespace MyTools.EditorScript
 {
@@ -16,7 +16,7 @@ namespace MyTools.EditorScript
             }
             else
             {
-                Debug.LogWarning("No focused window found!");
+                DebugUtils.LogWarning("No focused window found.");
             }
         }
 

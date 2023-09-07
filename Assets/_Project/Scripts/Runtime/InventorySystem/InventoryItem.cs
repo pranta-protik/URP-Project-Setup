@@ -14,6 +14,12 @@ namespace Project.IS
 			AddToStack();
 		}
 
+		public InventoryItem(InventoryItemDataSO itemData, int stackSize)
+		{
+			ItemData = itemData;
+			StackSize = stackSize;
+		}
+
 		public void AddToStack()
 		{
 			StackSize++;
@@ -22,6 +28,11 @@ namespace Project.IS
 		public void RemoveFromStack()
 		{
 			StackSize--;
+		}
+
+		public int GetTotalValue()
+		{
+			return StackSize * ItemData.value;
 		}
 	}
 }

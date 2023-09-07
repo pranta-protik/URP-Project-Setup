@@ -1,5 +1,5 @@
+using MyTools.Utils;
 using UnityEditor;
-using UnityEngine;
 
 namespace MyTools.EditorScript
 {
@@ -10,7 +10,7 @@ namespace MyTools.EditorScript
         {
             EditorApplication.ExecuteMenuItem("File/Save");
             EditorApplication.ExecuteMenuItem("File/Save Project");
-            Debug.Log("Saved scene and project");
+            DebugUtils.Log("Saved scene and project");
         }
     }
 }

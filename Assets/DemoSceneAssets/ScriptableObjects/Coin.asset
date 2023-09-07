@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1005441a856ad4eab3b925588711b6, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
-  inventoryItemDataAsset:
-    id: InventoryItem_Coin
-    displayName: Coin
-    icon: {fileID: 21300000, guid: 22d2ce37cfe49ca47ab7b1c3bd511fb2, type: 3}
-    prefab: {fileID: 502076081952970573, guid: 4fafe872622036c4abaa12867ad807d5, type: 3}
+  id: InventoryItem_Coin
+  displayName: Coin
+  icon: {fileID: 21300000, guid: 22d2ce37cfe49ca47ab7b1c3bd511fb2, type: 3}
+  prefab: {fileID: 502076081952970573, guid: 4fafe872622036c4abaa12867ad807d5, type: 3}
+  value: 10

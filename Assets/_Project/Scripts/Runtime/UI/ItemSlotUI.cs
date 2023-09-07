@@ -17,7 +17,7 @@ namespace Project.UI
 		{
 			_icon.sprite = item.ItemData.icon;
 			_label.text = item.ItemData.displayName;
-			_stackLabel.text = item.StackSize.ToString();
+			_stackLabel.text = item.GetTotalValue().ToString();
 		}
 	}
 }

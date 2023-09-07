@@ -9,5 +9,6 @@ namespace Project.IS
 		public string displayName;
 		public Sprite icon;
 		public GameObject prefab;
+		public int value;
 	}
 }

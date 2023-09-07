@@ -21,6 +21,6 @@ namespace MyTools.ES
 
 	public readonly struct Empty { }
 
-	[CreateAssetMenu(menuName = "ScriptableObjects/Events/EventChannel")]
+	[CreateAssetMenu(menuName = "ScriptableObjects/Events/EventChannel", fileName = "EventChannel")]
 	public class EventChannelSO : EventChannelSO<Empty> { }
 }

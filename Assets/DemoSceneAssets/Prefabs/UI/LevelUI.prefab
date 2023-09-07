@@ -260,8 +260,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8015468943332606764}
-        m_TargetAssemblyTypeName: Project.LevelCompleteUI, Assembly-CSharp
-        m_MethodName: LoadNextScene
+        m_TargetAssemblyTypeName: Project.UI.LevelCompleteUI, Assembly-CSharp
+        m_MethodName: OnNextButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b154705999c520438371e747ee20c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventChannel: {fileID: 11400000, guid: c1a8a7527aa52ed44ae12ce6a4c12575, type: 2}
+  eventChannel: {fileID: 11400000, guid: c1a8a7527aa52ed44ae12ce6a4c12575, type: 2}
   _unityEvent:
     m_PersistentCalls:
       m_Calls:
@@ -897,7 +897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b154705999c520438371e747ee20c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventChannel: {fileID: 11400000, guid: 4e9cc1a3e7b07ca4a9dbf726749ecaf1, type: 2}
+  eventChannel: {fileID: 11400000, guid: 4e9cc1a3e7b07ca4a9dbf726749ecaf1, type: 2}
   _unityEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1130,8 +1130,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9082519302181863093}
-        m_TargetAssemblyTypeName: Project.LevelFailUI, Assembly-CSharp
-        m_MethodName: ReloadScene
+        m_TargetAssemblyTypeName: Project.UI.LevelFailUI, Assembly-CSharp
+        m_MethodName: OnRetryButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53bab20fd4e1304299241da639bbb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventChannel: {fileID: 11400000, guid: 44cd26bc086b0ab4a80f774b087757b1, type: 2}
+  eventChannel: {fileID: 11400000, guid: 44cd26bc086b0ab4a80f774b087757b1, type: 2}
   _unityEvent:
     m_PersistentCalls:
       m_Calls:
