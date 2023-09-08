@@ -19,7 +19,10 @@ namespace Project
 			Continuous
 		}
 
+		[Header("References")]
 		[SerializeField, Anywhere] private SplineContainer _spline;
+
+		[Header("Follow Settings")]
 		[SerializeField] private LoopMode _loopMode = LoopMode.Once;
 		[SerializeField] private float _speed = 10f;
 

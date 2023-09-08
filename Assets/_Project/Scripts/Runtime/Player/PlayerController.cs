@@ -17,6 +17,7 @@ namespace Project
 
 		[Header("References")]
 		[SerializeField, Self] private Rigidbody _rigidbody;
+		[SerializeField, Self] private CapsuleCollider _capsuleCollider;
 		[SerializeField, Child] private Animator _animator;
 		[SerializeField, Self] private GroundChecker _groundChecker;
 		[SerializeField, Anywhere] private Joystick _joystick;
@@ -36,11 +37,15 @@ namespace Project
 		[Header("Dash Settings")]
 		[SerializeField] private float _dashForce = 10f;
 		[SerializeField] private float _dashDuration = 0.5f;
+		[SerializeField] private float _dashColliderHeight = 1f;
+		[SerializeField] private Vector3 _dashColliderCenter = new(0f, 0.5f, 0f);
 
 		private float _currentSpeed;
 		private float _velocity;
 		private float _jumpVelocity;
 		private float _dashVelocity = 1f;
+		private float _defaultColliderHeight;
+		private Vector3 _defaultColliderCenter;
 		private Vector3 _moveDir;
 		private List<Timer> _timersList;
 		private CountdownTimer _jumpTimer;
@@ -53,6 +58,9 @@ namespace Project
 
 			_rigidbody.freezeRotation = true;
 
+			_defaultColliderHeight = _capsuleCollider.height;
+			_defaultColliderCenter = _capsuleCollider.center;
+
 			SetupTimers();
 			SetupStateMachine();
 		}
@@ -63,8 +71,19 @@ namespace Project
 			_jumpTimer.OnTimerStart += () => _jumpVelocity = _jumpForce;
 
 			_dashTimer = new CountdownTimer(_dashDuration);
-			_dashTimer.OnTimerStart += () => _dashVelocity = _dashForce;
-			_dashTimer.OnTimerStop += () => _dashVelocity = 1f;
+			_dashTimer.OnTimerStart += () =>
+			{
+				_dashVelocity = _dashForce;
+				_capsuleCollider.height = _dashColliderHeight;
+				_capsuleCollider.center = _dashColliderCenter;
+			};
+
+			_dashTimer.OnTimerStop += () =>
+			{
+				_dashVelocity = 1f;
+				_capsuleCollider.height = _defaultColliderHeight;
+				_capsuleCollider.center = _defaultColliderCenter;
+			};
 
 			_timersList = new List<Timer>(2) { _jumpTimer, _dashTimer };
 		}

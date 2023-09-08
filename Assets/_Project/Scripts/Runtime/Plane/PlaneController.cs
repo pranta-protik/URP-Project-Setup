@@ -1,3 +1,4 @@
+using Cinemachine;
 using KBCore.Refs;
 using Project.Managers;
 using UnityEngine;
@@ -6,7 +7,11 @@ namespace Project
 {
 	public class PlaneController : ValidatedMonoBehaviour
 	{
+		[Header("References")]
 		[SerializeField, Anywhere] private Joystick _joystick;
+		[SerializeField, Anywhere] private CinemachineVirtualCamera _planeVCam;
+
+		[Header("Movement Settings")]
 		[SerializeField] private Vector2 _movementLimit = new(2f, 2f);
 		[SerializeField] private float _movementRange = 5f;
 		[SerializeField] private float _movementSpeed = 10f;
@@ -19,8 +24,11 @@ namespace Project
 		private float _roll;
 		private float _pitch;
 
-		private void Start()
+		private void Awake()
 		{
+			_planeVCam.Follow = transform;
+			_planeVCam.LookAt = transform;
+
 			_targetPosition = transform.localPosition;
 		}
 
