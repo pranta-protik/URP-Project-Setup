@@ -42,15 +42,15 @@ namespace Project.Managers
 
 		private void GameManager_OnLevelCompleted(int sceneIndex)
 		{
-			StartCoroutine(DelayAction(() => levelCompleteChannel.Invoke(sceneIndex)));
+			StartCoroutine(DelayActionRoutine(() => levelCompleteChannel.Invoke(sceneIndex)));
 		}
 
 		private void GameManager_OnLevelFailed()
 		{
-			StartCoroutine(DelayAction(() => levelFailChannel.Invoke(new Empty())));
+			StartCoroutine(DelayActionRoutine(() => levelFailChannel.Invoke(new Empty())));
 		}
 
-		private IEnumerator DelayAction(Action action)
+		private IEnumerator DelayActionRoutine(Action action)
 		{
 			yield return new WaitForSeconds(_uiScreenDelay);
 			action.Invoke();

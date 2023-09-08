@@ -1,4 +1,5 @@
 using KBCore.Refs;
+using Project.Managers;
 using UnityEngine;
 
 namespace Project
@@ -24,6 +25,14 @@ namespace Project
 		}
 
 		private void Update()
+		{
+			if (GameManager.Instance.CurrentGameState == GameManager.GameState.Running)
+			{
+				HandleMovement();
+			}
+		}
+
+		private void HandleMovement()
 		{
 			_targetPosition.x += _joystick.Direction.x * _movementSpeed * _movementRange * Time.deltaTime;
 			_targetPosition.y += _joystick.Direction.y * _movementSpeed * _movementRange * Time.deltaTime;

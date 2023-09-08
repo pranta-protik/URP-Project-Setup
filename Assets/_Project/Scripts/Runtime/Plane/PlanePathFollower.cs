@@ -1,10 +1,17 @@
 using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.Splines;
+using Project.Persistent.SaveSystem;
+using MyTools.Utils;
+using Project.Managers;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Project
 {
-	public class PlanePathFollower : ValidatedMonoBehaviour
+	public class PlanePathFollower : ValidatedMonoBehaviour, IDataPersistence
 	{
 		private enum LoopMode
 		{
@@ -22,9 +29,18 @@ namespace Project
 		private void Start()
 		{
 			_splineLength = _spline.CalculateLength();
+			transform.SetPositionAndRotation(_spline.EvaluatePosition(_distanceTravelled), Quaternion.LookRotation(_spline.EvaluateTangent(_distanceTravelled)));
 		}
 
 		private void Update()
+		{
+			if (GameManager.Instance.CurrentGameState == GameManager.GameState.Running)
+			{
+				HandlePathFollow();
+			}
+		}
+
+		private void HandlePathFollow()
 		{
 			switch (_loopMode)
 			{
@@ -51,5 +67,37 @@ namespace Project
 			var currentTangent = _spline.EvaluateTangent(_distanceTravelled);
 			transform.rotation = Quaternion.LookRotation(currentTangent);
 		}
+
+		public void LoadData(GameData gameData)
+		{
+			if (gameData.planePositionDictionary.TryGetValue(SceneUtils.GetActiveSceneIndex(), out var planePosition))
+			{
+				_distanceTravelled = planePosition;
+			}
+		}
+
+		public void SaveData(GameData gameData)
+		{
+			if (gameData.planePositionDictionary.ContainsKey(SceneUtils.GetActiveSceneIndex()))
+			{
+				gameData.planePositionDictionary.Remove(SceneUtils.GetActiveSceneIndex());
+			}
+
+			if (GameManager.Instance.IsGameOver()) return;
+
+			gameData.planePositionDictionary.Add(SceneUtils.GetActiveSceneIndex(), _distanceTravelled);
+		}
+
+#if UNITY_EDITOR
+
+		[ContextMenu("Move Plane To Start Position")]
+		private void MovePlaneToStartPosition()
+		{
+			transform.SetPositionAndRotation(_spline.EvaluatePosition(0f), Quaternion.LookRotation(_spline.EvaluateTangent(0f)));
+			EditorUtility.SetDirty(gameObject);
+		}
+
+#endif
+
 	}
 }
