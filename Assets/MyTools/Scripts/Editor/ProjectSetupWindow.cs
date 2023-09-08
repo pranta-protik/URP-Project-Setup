@@ -292,7 +292,7 @@ namespace MyTools.EditorScript
         {
             EditorGUILayout.BeginVertical();
 
-            GUILayout.Label("Import Asset Store Assets", _TitleLabelStyle);
+            GUILayout.Label("Import Asset Store Assets (Optional)", _TitleLabelStyle);
 
             EditorGUILayout.BeginHorizontal();
 
@@ -371,7 +371,7 @@ namespace MyTools.EditorScript
         {
             EditorGUILayout.BeginVertical();
 
-            GUILayout.Label("Import Local Drive Assets", _TitleLabelStyle);
+            GUILayout.Label("Import Local Drive Assets (Optional)", _TitleLabelStyle);
 
             EditorGUILayout.BeginHorizontal();
 
