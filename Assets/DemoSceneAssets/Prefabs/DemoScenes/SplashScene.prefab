@@ -868,7 +868,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1944865064068429334}
   m_Layer: 0
-  m_Name: SplashUI
+  m_Name: SplashScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

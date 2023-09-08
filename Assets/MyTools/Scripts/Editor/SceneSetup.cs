@@ -67,17 +67,17 @@ namespace MyTools.EditorScript
         {
             if (TryOpenScene(relativePath))
             {
-                var prefabPath = "Assets/DemoSceneAssets/Prefabs/UI/SplashUI.prefab";
+                var prefabPath = "Assets/DemoSceneAssets/Prefabs/DemoScenes/SplashScene.prefab";
 
                 if (Object.FindObjectsOfType<GameObject>().Length <= 0)
                 {
-                    SetupAndSaveUsingPrefab(prefabPath, "SplashUI");
+                    SetupAndSaveUsingPrefab(prefabPath, "SplashScene");
                     return;
                 }
 
                 if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Are you sure you want to setup splash scene?\nAll existing data will be erased."))
                 {
-                    SetupAndSaveUsingPrefab(prefabPath, "SplashUI");
+                    SetupAndSaveUsingPrefab(prefabPath, "SplashScene");
                 }
             }
         }
@@ -86,17 +86,17 @@ namespace MyTools.EditorScript
         {
             if (TryOpenScene(relativePath))
             {
-                var prefabPath = "Assets/DemoSceneAssets/Prefabs/UI/LevelUI.prefab";
+                var prefabPath = "Assets/DemoSceneAssets/Prefabs/DemoScenes/UIScene.prefab";
 
                 if (Object.FindObjectsOfType<GameObject>().Length <= 0)
                 {
-                    SetupAndSaveUsingPrefab(prefabPath, "LevelUI");
+                    SetupAndSaveUsingPrefab(prefabPath, "UIScene");
                     return;
                 }
 
                 if (EditorUtils.DisplayDialogBoxWithOptions("Warning!", "Are you sure you want to setup UI scene?\nAll existing data will be erased."))
                 {
-                    SetupAndSaveUsingPrefab(prefabPath, "LevelUI");
+                    SetupAndSaveUsingPrefab(prefabPath, "UIScene");
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace MyTools.EditorScript
         {
             if (TryOpenScene(relativePath))
             {
-                var prefabPath = "Assets/DemoSceneAssets/Prefabs/DemoScene/DemoScene.prefab";
+                var prefabPath = "Assets/DemoSceneAssets/Prefabs/DemoScenes/DemoScene.prefab";
                 var lightingSettingsPath = "Assets/DemoSceneAssets/Settings/DemoSceneLightingSettings.asset";
 
                 if (Object.FindObjectsOfType<GameObject>().Length <= 0)

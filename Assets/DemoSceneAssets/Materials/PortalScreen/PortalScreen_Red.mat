@@ -24,13 +24,13 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 2b03e49cb921aab4a8b9400b9db92ac9,
     type: 3}
   m_Parent: {fileID: 2100000, guid: 426c6997ca9ec0245a00ae5bf3074b0f, type: 2}
-  m_ModifiedSerializedProperties: 2
+  m_ModifiedSerializedProperties: 18
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 

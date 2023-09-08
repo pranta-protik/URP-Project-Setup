@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using MyTools.Utils;
-using Project.IS;
 using Project.Managers;
 using Project.Persistent.SaveSystem;
 using UnityEngine;

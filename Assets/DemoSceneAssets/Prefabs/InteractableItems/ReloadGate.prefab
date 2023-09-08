@@ -71,6 +71,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ReloadGate
       objectReference: {fileID: 0}
+    - target: {fileID: 1509947241217225059, guid: 6fae93127806e6447a8f9fc88e6dc795,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2287751269431192537, guid: 6fae93127806e6447a8f9fc88e6dc795,
         type: 3}
       propertyPath: m_RootOrder
@@ -151,6 +156,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7684245714649093215}
+    - targetCorrespondingSourceObject: {fileID: 1509947241217225059, guid: 6fae93127806e6447a8f9fc88e6dc795,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7116133102852205694}
   m_SourcePrefab: {fileID: 100100000, guid: 6fae93127806e6447a8f9fc88e6dc795, type: 3}
 --- !u!1 &2496544269843849104 stripped
 GameObject:
@@ -197,6 +206,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea83ab0505386b14aae65cb023a30064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7116133102852205694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2496544269843849104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df7da15f1491664cb733141729583e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersList: []
 --- !u!4 &3021441897880356138 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2287751269431192537, guid: 6fae93127806e6447a8f9fc88e6dc795,

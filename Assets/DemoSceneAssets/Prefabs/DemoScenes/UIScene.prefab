@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 7698694824697841240}
   - component: {fileID: 8394183192787788220}
   m_Layer: 5
-  m_Name: StartUI
+  m_Name: StartPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1262,7 +1262,7 @@ GameObject:
   - component: {fileID: 2124626156821852957}
   - component: {fileID: 8015468943332606764}
   m_Layer: 5
-  m_Name: CompleteUI
+  m_Name: CompletePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1646,7 +1646,7 @@ GameObject:
   - component: {fileID: 9136019516585502716}
   - component: {fileID: 9082519302181863093}
   m_Layer: 5
-  m_Name: FailUI
+  m_Name: FailPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1951,7 +1951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8781542701117411114}
   m_Layer: 0
-  m_Name: LevelUI
+  m_Name: UIScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
