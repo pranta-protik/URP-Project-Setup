@@ -69,7 +69,7 @@ PrefabInstance:
     - target: {fileID: 1509947241217225059, guid: 6fae93127806e6447a8f9fc88e6dc795,
         type: 3}
       propertyPath: m_Name
-      value: ReloadGate
+      value: RetryGate
       objectReference: {fileID: 0}
     - target: {fileID: 1509947241217225059, guid: 6fae93127806e6447a8f9fc88e6dc795,
         type: 3}
@@ -135,6 +135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2287751269431192537, guid: 6fae93127806e6447a8f9fc88e6dc795,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -218,10 +223,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df7da15f1491664cb733141729583e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderersList: []
+  _renderersList:
+  - {fileID: 4153864466800049733}
 --- !u!4 &3021441897880356138 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2287751269431192537, guid: 6fae93127806e6447a8f9fc88e6dc795,
+    type: 3}
+  m_PrefabInstance: {fileID: 3914165519606951667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4153864466800049733 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1149708131291025590, guid: 6fae93127806e6447a8f9fc88e6dc795,
     type: 3}
   m_PrefabInstance: {fileID: 3914165519606951667}
   m_PrefabAsset: {fileID: 0}

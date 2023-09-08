@@ -214,6 +214,21 @@ namespace MyTools
 				_blockingObjectsList.Remove(nonBlockingObject);
 			}
 		}
-	}
 
+#if UNITY_EDITOR
+		private void OnDrawGizmosSelected()
+		{
+			Gizmos.color = Color.red;
+
+			Gizmos.DrawRay(
+				Camera.main.transform.position,
+				(transform.position + _positionOffset - Camera.main.transform.position).normalized *
+				Vector3.Distance(Camera.main.transform.position, transform.position + _positionOffset)
+				);
+
+			Gizmos.color = Color.white;
+		}
+#endif
+
+	}
 }

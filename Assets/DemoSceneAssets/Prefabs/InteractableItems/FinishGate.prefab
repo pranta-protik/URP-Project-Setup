@@ -136,6 +136,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2287751269431192537, guid: 6fae93127806e6447a8f9fc88e6dc795,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -161,6 +166,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5682089366508362236}
   m_SourcePrefab: {fileID: 100100000, guid: 6fae93127806e6447a8f9fc88e6dc795, type: 3}
+--- !u!23 &2475296080251703071 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1149708131291025590, guid: 6fae93127806e6447a8f9fc88e6dc795,
+    type: 3}
+  m_PrefabInstance: {fileID: 3291728767330492329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3607709268961014896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2287751269431192537, guid: 6fae93127806e6447a8f9fc88e6dc795,
@@ -224,7 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df7da15f1491664cb733141729583e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderersList: []
+  _renderersList:
+  - {fileID: 2475296080251703071}
 --- !u!1001 &7350991291925733490
 PrefabInstance:
   m_ObjectHideFlags: 0

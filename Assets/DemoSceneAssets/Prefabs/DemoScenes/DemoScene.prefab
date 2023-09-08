@@ -4796,7 +4796,7 @@ PrefabInstance:
     - target: {fileID: 2496544269843849104, guid: a0595cb619741884d9163f39a7876783,
         type: 3}
       propertyPath: m_Name
-      value: ReloadGate
+      value: RetryGate
       objectReference: {fileID: 0}
     - target: {fileID: 3021441897880356138, guid: a0595cb619741884d9163f39a7876783,
         type: 3}
