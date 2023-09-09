@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: DemoSceneLightingSettings
   m_EditorClassIdentifier: 
   skyboxMat: {fileID: 2100000, guid: 133347283e115d147a5fcce7f47a538f, type: 2}
+  ambientMode: 3
+  ambientColor: {r: 1, g: 1, b: 1, a: 1}

@@ -160,6 +160,9 @@ namespace MyTools.EditorScript
                 }
             }
 
+            RenderSettings.ambientMode = settings.ambientMode;
+            RenderSettings.ambientLight = settings.ambientColor;
+
             if (EditorUtils.DisplayDialogBoxWithOptions("Generate Lightmap", "Do you want to generate lightmap for this scene?"))
             {
                 Lightmapping.BakeAsync();

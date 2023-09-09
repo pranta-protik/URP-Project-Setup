@@ -406,7 +406,7 @@ Transform:
   - {fileID: 8425599525485906375}
   - {fileID: 2124760774454443165}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &647280949241269
 PrefabInstance:
@@ -23021,11 +23021,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Proto_Block_Platform_Square_02 (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2125758587374121904, guid: 9caf389253284694fb73da6924bfcdef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
