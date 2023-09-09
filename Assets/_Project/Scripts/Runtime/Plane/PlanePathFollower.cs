@@ -71,6 +71,8 @@ namespace Project
 			transform.rotation = Quaternion.LookRotation(currentTangent);
 		}
 
+		public void ResetDistanceTravelled() => _distanceTravelled = 0f;
+
 		public void LoadData(GameData gameData)
 		{
 			if (gameData.planePositionDictionary.TryGetValue(SceneUtils.GetActiveSceneIndex(), out var planePosition))

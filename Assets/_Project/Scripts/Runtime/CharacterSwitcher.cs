@@ -74,19 +74,6 @@ namespace Project
 			_playerPlaneVCam.Priority = 10;
 		}
 
-		private void Update()
-		{
-			if (Input.GetKeyDown(KeyCode.H))
-			{
-				SwitchToHumanPlayerCharacter();
-			}
-
-			if (Input.GetKeyDown(KeyCode.P))
-			{
-				SwitchToPlanePlayerCharacter();
-			}
-		}
-
 		public void LoadData(GameData gameData)
 		{
 			if (gameData.activeCharacterTypeDictionary.TryGetValue(SceneUtils.GetActiveSceneIndex(), out var activeCharacterType))

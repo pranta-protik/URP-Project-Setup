@@ -1,7 +1,6 @@
-using Project.IS;
 using UnityEngine;
 
-namespace Project
+namespace Project.IS
 {
 	public class InventoryItemCollector : MonoBehaviour
 	{

@@ -32,7 +32,7 @@ namespace DemoScene
 
 		public void LoadData(GameData gameData)
 		{
-			if (gameData.dictionaryOfcoinHolderDictionary.TryGetValue(SceneUtils.GetActiveSceneIndex(), out var coinHolderDictionary))
+			if (gameData.dictionaryOfCoinHolderDictionary.TryGetValue(SceneUtils.GetActiveSceneIndex(), out var coinHolderDictionary))
 			{
 				foreach (var keyValuePair in coinHolderDictionary)
 				{
@@ -48,9 +48,9 @@ namespace DemoScene
 
 		public void SaveData(GameData gameData)
 		{
-			if (gameData.dictionaryOfcoinHolderDictionary.ContainsKey(SceneUtils.GetActiveSceneIndex()))
+			if (gameData.dictionaryOfCoinHolderDictionary.ContainsKey(SceneUtils.GetActiveSceneIndex()))
 			{
-				gameData.dictionaryOfcoinHolderDictionary.Remove(SceneUtils.GetActiveSceneIndex());
+				gameData.dictionaryOfCoinHolderDictionary.Remove(SceneUtils.GetActiveSceneIndex());
 			}
 
 			if (GameManager.Instance.IsGameOver()) return;
@@ -69,7 +69,7 @@ namespace DemoScene
 				}
 			}
 
-			gameData.dictionaryOfcoinHolderDictionary.Add(SceneUtils.GetActiveSceneIndex(), coinHolderDictionary);
+			gameData.dictionaryOfCoinHolderDictionary.Add(SceneUtils.GetActiveSceneIndex(), coinHolderDictionary);
 		}
 	}
 }

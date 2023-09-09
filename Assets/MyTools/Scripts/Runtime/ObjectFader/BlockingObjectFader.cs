@@ -18,7 +18,6 @@ namespace MyTools
 		private Dictionary<FadeableObject, Coroutine> _runningCoroutinesDictionary;
 		private RaycastHit[] _hitInfos = new RaycastHit[5];
 		private Transform _cameraTransform;
-		private float _rayDistance;
 
 		private void Awake()
 		{
@@ -26,11 +25,9 @@ namespace MyTools
 			_runningCoroutinesDictionary = new Dictionary<FadeableObject, Coroutine>();
 		}
 
-		private void Start()
+		private void OnEnable()
 		{
 			_cameraTransform = Camera.main.transform;
-			_rayDistance = Vector3.Distance(_cameraTransform.position, transform.position + _positionOffset);
-
 			StartCoroutine(CheckForBlockingObjectsRoutine());
 		}
 
@@ -42,7 +39,7 @@ namespace MyTools
 					_cameraTransform.position,
 					(transform.position + _positionOffset - _cameraTransform.position).normalized,
 					_hitInfos,
-					_rayDistance,
+					Vector3.Distance(_cameraTransform.position, transform.position + _positionOffset),
 					_fadeableObjectLayers
 				);
 

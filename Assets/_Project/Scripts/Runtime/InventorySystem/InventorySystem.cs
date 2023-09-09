@@ -60,11 +60,11 @@ namespace Project.IS
 			OnInventoryUpdated?.Invoke();
 		}
 
-		public void Remove(InventoryItemDataSO itemData)
+		public void Remove(InventoryItemDataSO itemData, int amount)
 		{
 			if (_inventoryItemsDictionary.TryGetValue(itemData, out InventoryItem item))
 			{
-				item.RemoveFromStack();
+				item.RemoveFromStack(amount);
 
 				if (item.StackSize == 0)
 				{
@@ -78,7 +78,7 @@ namespace Project.IS
 
 		public void LoadData(GameData gameData)
 		{
-			if (gameData.dictionaryOfinventorySystemDictionary.TryGetValue(SceneUtils.GetActiveSceneIndex(), out var inventorySystemDictionary))
+			if (gameData.dictionaryOfInventorySystemDictionary.TryGetValue(SceneUtils.GetActiveSceneIndex(), out var inventorySystemDictionary))
 			{
 				foreach (var keyValuePair in inventorySystemDictionary)
 				{
@@ -106,9 +106,9 @@ namespace Project.IS
 
 		public void SaveData(GameData gameData)
 		{
-			if (gameData.dictionaryOfinventorySystemDictionary.ContainsKey(SceneUtils.GetActiveSceneIndex()))
+			if (gameData.dictionaryOfInventorySystemDictionary.ContainsKey(SceneUtils.GetActiveSceneIndex()))
 			{
-				gameData.dictionaryOfinventorySystemDictionary.Remove(SceneUtils.GetActiveSceneIndex());
+				gameData.dictionaryOfInventorySystemDictionary.Remove(SceneUtils.GetActiveSceneIndex());
 			}
 
 			if (!GameManager.Instance.IsGameOver())
@@ -120,7 +120,7 @@ namespace Project.IS
 					inventorySystemDictionary.Add(_inventoryItemDataDictionary[keyValuePair.Key], keyValuePair.Value.StackSize);
 				}
 
-				gameData.dictionaryOfinventorySystemDictionary.Add(SceneUtils.GetActiveSceneIndex(), inventorySystemDictionary);
+				gameData.dictionaryOfInventorySystemDictionary.Add(SceneUtils.GetActiveSceneIndex(), inventorySystemDictionary);
 			}
 
 			if (GameManager.Instance.CurrentGameState == GameManager.GameState.Completed)

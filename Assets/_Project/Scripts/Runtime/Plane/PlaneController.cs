@@ -2,6 +2,7 @@ using Cinemachine;
 using KBCore.Refs;
 using Project.Managers;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Project
 {
@@ -19,6 +20,8 @@ namespace Project
 		[SerializeField] private float _rollSpeed = 5f;
 		[SerializeField] private float _maxPitch = 10f;
 		[SerializeField] private float _pitchSpeed = 5f;
+
+		public UnityEvent OnEjected;
 
 		private Vector3 _targetPosition;
 		private float _roll;
@@ -54,6 +57,22 @@ namespace Project
 			_pitch = Mathf.Lerp(_pitch, -_joystick.Direction.y * _maxPitch, _pitchSpeed * Time.deltaTime);
 
 			transform.localRotation = Quaternion.Euler(_pitch, transform.localEulerAngles.y, _roll);
+		}
+
+		private void ResetOrientation()
+		{
+			_roll = 0f;
+			_pitch = 0f;
+			_targetPosition = Vector3.zero;
+
+			transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+		}
+
+		public void OnEjectButtonClick()
+		{
+			OnEjected?.Invoke();
+			ResetOrientation();
+			CharacterSwitcher.Instance.SwitchToHumanPlayerCharacter();
 		}
 	}
 }

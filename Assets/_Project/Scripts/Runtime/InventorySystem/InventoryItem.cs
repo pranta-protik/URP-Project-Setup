@@ -25,9 +25,9 @@ namespace Project.IS
 			StackSize++;
 		}
 
-		public void RemoveFromStack()
+		public void RemoveFromStack(int amount)
 		{
-			StackSize--;
+			StackSize -= amount;
 		}
 
 		public int GetTotalValue()
