@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DemoScene
+namespace Project
 {
 	public interface IInteractable
 	{

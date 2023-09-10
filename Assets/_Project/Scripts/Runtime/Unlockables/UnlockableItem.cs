@@ -1,19 +1,17 @@
+using Project.Persistent.SaveSystem;
+using UnityEngine;
 using KBCore.Refs;
 using Project.IS;
-using UnityEngine;
-using Project.Persistent.SaveSystem;
 using Project.Managers;
 using DG.Tweening;
-using Project;
-
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace DemoScene
+namespace Project
 {
-	public class PlaneHanger : ValidatedMonoBehaviour, IUnlockable, IInteractable, IDataPersistence
+	public abstract class UnlockableItem : ValidatedMonoBehaviour, IUnlockable, IInteractable, IDataPersistence
 	{
 		[Header("Id has to be unique")]
 		[SerializeField] private string _id;
@@ -30,24 +28,22 @@ namespace DemoScene
 		[Header("References")]
 		[SerializeField, Child] private PaymentPlatform _paymentPlatform;
 		[SerializeField, Child] private InteractionPlatform _interactionPlatform;
-		[SerializeField, Anywhere] private Transform _idlingSpot;
-		[SerializeField, Anywhere] private Transform _rampTransform;
+		[SerializeField, Anywhere] protected Transform _idlingSpot;
 
 		[Header("Data Settings")]
 		[SerializeField] private InventoryItemDataSO _itemData;
 		[SerializeField] private int _unlockCost = 10;
-		[SerializeField] private float _scaleTime = 1f;
+		[SerializeField] protected float _scaleTime = 1f;
 
 		private int _depositedAmount;
-		private bool _isUnlocked;
+		protected bool _isUnlocked;
 
-		private void Start()
+		protected virtual void Start()
 		{
 			_isUnlocked = _depositedAmount >= _unlockCost;
 
 			_paymentPlatform.gameObject.SetActive(!_isUnlocked);
 			_interactionPlatform.gameObject.SetActive(_isUnlocked);
-			_rampTransform.gameObject.SetActive(_isUnlocked);
 		}
 
 		public void Deposit(int amount)
@@ -62,21 +58,17 @@ namespace DemoScene
 				_depositedAmount += amount;
 				InventorySystem.Instance.Remove(_itemData, amount);
 
-				if (_depositedAmount >= _unlockCost) UnlockHanger();
+				if (_depositedAmount >= _unlockCost) UnlockItem();
 			}
 		}
 
-		private void UnlockHanger()
+		protected virtual void UnlockItem()
 		{
 			_paymentPlatform.gameObject.SetActive(false);
-
 			_interactionPlatform.gameObject.SetActive(true);
+
 			_interactionPlatform.transform.localScale = Vector3.zero;
 			_interactionPlatform.transform.DOScale(Vector3.one, _scaleTime).SetEase(Ease.OutBack);
-
-			_rampTransform.gameObject.SetActive(true);
-			_rampTransform.localScale = Vector3.zero;
-			_rampTransform.DOScale(Vector3.one, _scaleTime).SetEase(Ease.OutBack);
 		}
 
 		public bool CanDeposit()
@@ -94,18 +86,11 @@ namespace DemoScene
 
 		public float GetDepositedAmountNormalized() => (float)_depositedAmount / _unlockCost;
 
-		public void Interact(Transform interactor)
-		{
-			if (interactor)
-			{
-				CharacterSwitcher.Instance.SwitchToPlanePlayerCharacter();
-				interactor.position = _idlingSpot.position;
-			}
-		}
+		public abstract void Interact(Transform interactor);
 
 		public void LoadData(GameData gameData)
 		{
-			if (gameData.planeHangerDictionary.TryGetValue(_id, out var depositedAmount))
+			if (gameData.unlockableItemDictionary.TryGetValue(_id, out var depositedAmount))
 			{
 				_depositedAmount = depositedAmount;
 			}
@@ -113,16 +98,16 @@ namespace DemoScene
 
 		public void SaveData(GameData gameData)
 		{
-			if (gameData.planeHangerDictionary.ContainsKey(_id))
+			if (gameData.unlockableItemDictionary.ContainsKey(_id))
 			{
-				gameData.planeHangerDictionary.Remove(_id);
+				gameData.unlockableItemDictionary.Remove(_id);
 			}
 
 			if (GameManager.Instance.IsGameOver()) return;
 
-			gameData.planeHangerDictionary.Add(_id, _depositedAmount);
+			gameData.unlockableItemDictionary.Add(_id, _depositedAmount);
 		}
 
-		private void OnDestroy() => _rampTransform.DOKill();
+		protected virtual void OnDestroy() { }
 	}
 }

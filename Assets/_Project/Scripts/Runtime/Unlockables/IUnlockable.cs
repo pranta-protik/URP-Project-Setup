@@ -1,4 +1,4 @@
-namespace DemoScene
+namespace Project
 {
 	public interface IUnlockable
 	{

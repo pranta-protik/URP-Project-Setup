@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DemoScene
+namespace Project
 {
 	public class PaymentPlatform : ValidatedMonoBehaviour
 	{

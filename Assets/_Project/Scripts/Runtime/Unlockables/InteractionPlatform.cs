@@ -4,7 +4,7 @@ using Project.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DemoScene
+namespace Project
 {
 	public class InteractionPlatform : ValidatedMonoBehaviour
 	{
