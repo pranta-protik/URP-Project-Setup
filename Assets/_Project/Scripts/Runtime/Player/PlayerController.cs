@@ -178,6 +178,11 @@ namespace Project
 			_rigidbody.velocity = new Vector3(velocity.x, _rigidbody.velocity.y, velocity.z);
 		}
 
+		public void HandleDrop()
+		{
+			if (!_groundChecker.IsGrounded) _rigidbody.AddForce(Physics.gravity * _gravityMultiplier, ForceMode.Force);
+		}
+
 		public void Jump()
 		{
 			_jumpTimer.Start();
