@@ -1434,6 +1434,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f635482807c6d41bf0826d1f0063c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _joystick: {fileID: 7236206341967465790}
+  _planeVCam: {fileID: 8543187753200528633}
+  _movementLimit: {x: 4, y: 4}
+  _movementRange: 5
+  _movementSpeed: 1
+  _maxRoll: 15
+  _rollSpeed: 5
+  _maxPitch: 15
+  _pitchSpeed: 5
   OnEjected:
     m_PersistentCalls:
       m_Calls:
@@ -1449,15 +1458,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _joystick: {fileID: 7236206341967465790}
-  _planeVCam: {fileID: 8543187753200528633}
-  _movementLimit: {x: 4, y: 4}
-  _movementRange: 5
-  _movementSpeed: 1
-  _maxRoll: 15
-  _rollSpeed: 5
-  _maxPitch: 15
-  _pitchSpeed: 5
 --- !u!114 &8823145373090737865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3232,6 +3232,7 @@ GameObject:
   - component: {fileID: 5801028707520110299}
   - component: {fileID: 4887048389150469885}
   - component: {fileID: 486828956938640122}
+  - component: {fileID: 6563815877673598678}
   - component: {fileID: 6488766023879764687}
   - component: {fileID: 7400231098649990500}
   m_Layer: 0
@@ -3323,6 +3324,7 @@ MonoBehaviour:
   _capsuleCollider: {fileID: 8711526913085711080}
   _animator: {fileID: 4028678290190440798}
   _groundChecker: {fileID: 486828956938640122}
+  _ceilingChecker: {fileID: 6563815877673598678}
   _joystick: {fileID: 7236206341967465790}
   _playerVCam: {fileID: 2596780935734142601}
   _moveSpeed: 300
@@ -3335,7 +3337,10 @@ MonoBehaviour:
   _dashForce: 1.5
   _dashDuration: 0.7
   _dashColliderHeight: 1
-  _dashColliderCenter: {x: 0, y: 0.5, z: 0}
+  _dashColliderCenter: {x: 0, y: 0.47, z: 0}
+  _crouchSpeed: 150
+  _crouchColliderHeight: 1
+  _crouchColliderCenter: {x: 0, y: 0.47, z: 0}
 --- !u!114 &486828956938640122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3348,9 +3353,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe3ff22f2e922340be7019b75518b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundDistance: 0.1
+  _groundDistance: 0.3
   _sphereRadius: 0.02
   _groundLayers:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &6563815877673598678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9021947088334550789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94633c664863b47409a89f90d96b7222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ceilingDistance: 1
+  _originOffset: {x: 0, y: 1, z: 0}
+  _sphereRadius: 0.02
+  _ceilingLayers:
     serializedVersion: 2
     m_Bits: 256
 --- !u!114 &6488766023879764687

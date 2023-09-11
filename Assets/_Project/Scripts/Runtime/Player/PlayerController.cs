@@ -20,6 +20,7 @@ namespace Project
 		[SerializeField, Self] private CapsuleCollider _capsuleCollider;
 		[SerializeField, Child] private Animator _animator;
 		[SerializeField, Self] private GroundChecker _groundChecker;
+		[SerializeField, Self] private CeilingChecker _ceilingChecker;
 		[SerializeField, Anywhere] private Joystick _joystick;
 		[SerializeField, Anywhere] private CinemachineVirtualCamera _playerVCam;
 
@@ -38,12 +39,18 @@ namespace Project
 		[SerializeField] private float _dashForce = 10f;
 		[SerializeField] private float _dashDuration = 0.5f;
 		[SerializeField] private float _dashColliderHeight = 1f;
-		[SerializeField] private Vector3 _dashColliderCenter = new(0f, 0.5f, 0f);
+		[SerializeField] private Vector3 _dashColliderCenter = new(0f, 0.47f, 0f);
+
+		[Header("Crouch Settings")]
+		[SerializeField] private float _crouchDecelaration = 0.5f;
+		[SerializeField] private float _crouchColliderHeight = 1f;
+		[SerializeField] private Vector3 _crouchColliderCenter = new(0f, 0.47f, 0f);
 
 		private float _currentSpeed;
 		private float _velocity;
 		private float _jumpVelocity;
 		private float _dashVelocity = 1f;
+		private float _crouchVelocity = 1f;
 		private float _defaultColliderHeight;
 		private Vector3 _defaultColliderCenter;
 		private Vector3 _moveDir;
@@ -74,15 +81,11 @@ namespace Project
 			_dashTimer.OnTimerStart += () =>
 			{
 				_dashVelocity = _dashForce;
-				_capsuleCollider.height = _dashColliderHeight;
-				_capsuleCollider.center = _dashColliderCenter;
 			};
 
 			_dashTimer.OnTimerStop += () =>
 			{
 				_dashVelocity = 1f;
-				_capsuleCollider.height = _defaultColliderHeight;
-				_capsuleCollider.center = _defaultColliderCenter;
 			};
 
 			_timersList = new List<Timer>(2) { _jumpTimer, _dashTimer };
@@ -93,16 +96,33 @@ namespace Project
 			_stateMachine = new StateMachine();
 
 			// Declate States
-			var locomotionState = new PlayerLocomotionState(this, _animator);
+			var locomotionState = new PlayerLocomotionState(this, _animator, new PlayerLocomotionState.LocomotionStateData(
+				_capsuleCollider,
+				_defaultColliderHeight,
+				_defaultColliderCenter));
+
 			var jumpState = new PlayerJumpState(this, _animator);
-			var dashState = new PlayerDashState(this, _animator);
+
+			var dashState = new PlayerDashState(this, _animator, new PlayerDashState.DashStateData(
+				_capsuleCollider,
+				_dashColliderHeight,
+				_dashColliderCenter));
+
+			var crouchState = new PlayerCrouchState(this, _animator, new PlayerCrouchState.CrouchStateData(
+				_capsuleCollider,
+				_crouchColliderHeight,
+				_crouchColliderCenter,
+				_crouchDecelaration
+				));
 
 			// Declate Transitions
 			At(locomotionState, jumpState, new FuncPredicate(() => _jumpTimer.IsRunning));
 			At(locomotionState, dashState, new FuncPredicate(() => _dashTimer.IsRunning));
+			At(locomotionState, crouchState, new FuncPredicate(() => _ceilingChecker.IsTouchingCeiling));
 			At(dashState, jumpState, new FuncPredicate(() => _jumpTimer.IsRunning));
+			At(dashState, crouchState, new FuncPredicate(() => !_dashTimer.IsRunning && _ceilingChecker.IsTouchingCeiling));
 
-			Any(locomotionState, new FuncPredicate(() => _groundChecker.IsGrounded && !_jumpTimer.IsRunning && !_dashTimer.IsRunning));
+			Any(locomotionState, new FuncPredicate(() => _groundChecker.IsGrounded && !_jumpTimer.IsRunning && !_dashTimer.IsRunning && !_ceilingChecker.IsTouchingCeiling));
 
 			// Set initial state
 			_stateMachine.SetState(locomotionState);
@@ -174,7 +194,7 @@ namespace Project
 
 		private void HandleHorizontalMovement()
 		{
-			var velocity = _dashVelocity * _moveSpeed * Time.fixedDeltaTime * _moveDir;
+			var velocity = _dashVelocity * _crouchVelocity * _moveSpeed * Time.fixedDeltaTime * _moveDir;
 			_rigidbody.velocity = new Vector3(velocity.x, _rigidbody.velocity.y, velocity.z);
 		}
 
@@ -209,6 +229,11 @@ namespace Project
 		public void Dash()
 		{
 			_dashTimer.Start();
+		}
+
+		public void SetCrouchVelocity(float velocity)
+		{
+			_crouchVelocity = velocity;
 		}
 
 		private void SmoothSpeed(float value)

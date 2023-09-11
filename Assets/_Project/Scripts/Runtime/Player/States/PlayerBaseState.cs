@@ -1,4 +1,5 @@
 using MyTools.SM;
+using MyTools.Utils;
 using UnityEngine;
 
 namespace Project
@@ -7,6 +8,7 @@ namespace Project
 	{
 		protected static readonly int _IsJumping = Animator.StringToHash("IsJumping");
 		protected static readonly int _IsDashing = Animator.StringToHash("IsDashing");
+		protected static readonly int _ISCrouching = Animator.StringToHash("IsCrouching");
 
 		protected readonly PlayerController _playerController;
 		protected readonly Animator _animator;

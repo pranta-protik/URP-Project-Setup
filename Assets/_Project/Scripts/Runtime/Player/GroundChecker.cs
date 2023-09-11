@@ -4,8 +4,8 @@ namespace Project
 {
 	public class GroundChecker : MonoBehaviour
 	{
-		[SerializeField] private float _groundDistance;
-		[SerializeField] private float _sphereRadius = 0.1f;
+		[SerializeField] private float _groundDistance = 0.3f;
+		[SerializeField] private float _sphereRadius = 0.02f;
 		[SerializeField] private LayerMask _groundLayers;
 
 		public bool IsGrounded { get; private set; }
