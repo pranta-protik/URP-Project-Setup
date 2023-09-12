@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using DG.Tweening;
 using Project;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace DemoScene
 		[SerializeField] private int _vibrato = 5;
 		[SerializeField, Range(0f, 90f)] private float _randomness = 30f;
 		[SerializeField] private bool _fadeOut = true;
-		[SerializeField] private ShakeRandomnessMode _shakeRandomnessMode = ShakeRandomnessMode.Harmonic;
+		[EnumToggleButtons, Title("Shake Randomness Mode"), HideLabel][SerializeField] private ShakeRandomnessMode _shakeRandomnessMode = ShakeRandomnessMode.Harmonic;
 
 		private Vector3 _startScale;
 

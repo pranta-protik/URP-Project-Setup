@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using Cinemachine;
@@ -17,7 +18,7 @@ namespace Project
 			Plane
 		}
 
-		[SerializeField] private CharacterType _activeCharacterType = CharacterType.Human;
+		[EnumToggleButtons][SerializeField] private CharacterType _activeCharacterType = CharacterType.Human;
 		[SerializeField, Anywhere] private GameObject _playerHumanGO;
 		[SerializeField, Anywhere] private GameObject _playerPlaneGO;
 		[SerializeField, Anywhere] private CinemachineVirtualCamera _playerHumanVCam;

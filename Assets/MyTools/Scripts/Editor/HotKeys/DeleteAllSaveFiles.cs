@@ -3,7 +3,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace MyTools.EditorScript
+namespace MyTools.EditorScript.HotKeys
 {
 	public static class DeleteAllSaveFiles
 	{

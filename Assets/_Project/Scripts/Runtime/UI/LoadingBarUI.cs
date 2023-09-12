@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 using KBCore.Refs;
@@ -10,7 +11,7 @@ namespace Project.UI
 	{
 		[Header("References")]
 		[SerializeField, Anywhere] private Image _fillMask;
-		[SerializeField, Range(0f, 10f)] private float _loadingDuration = 3f;
+		[ShowIf("@_fillMask != null")][SerializeField, Range(0f, 10f)] private float _loadingDuration = 3f;
 
 		private CountdownTimer _loadingTimer;
 

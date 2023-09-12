@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace MyTools
+namespace MyTools.ObjectFader
 {
 	public class BlockingObjectFader : MonoBehaviour
 	{

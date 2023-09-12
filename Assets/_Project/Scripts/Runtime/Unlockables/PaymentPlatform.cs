@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using KBCore.Refs;
 using MyTools.Utils;
 using Project.Utils;
@@ -9,16 +10,14 @@ namespace Project
 {
 	public class PaymentPlatform : ValidatedMonoBehaviour
 	{
-		[Header("References")]
-		[SerializeField, Anywhere] private GameObject _unlockableGO;
-		[SerializeField, Anywhere] private Image _loadingBarFill;
-		[SerializeField, Anywhere] private Image _progressBarFill;
-		[SerializeField, Child] private TextMeshProUGUI _progressText;
+		[TabGroup("References")][SerializeField, Anywhere] private GameObject _unlockableGO;
+		[TabGroup("References")][SerializeField, Anywhere] private Image _loadingBarFill;
+		[TabGroup("References")][SerializeField, Anywhere] private Image _progressBarFill;
+		[TabGroup("References")][SerializeField, Child] private TextMeshProUGUI _progressText;
 
-		[Header("Progression Settings")]
-		[SerializeField] private float _preparationDuration = 2f;
-		[SerializeField] private int _installmentValue = 1;
-		[SerializeField] private float _installmentInterval = 0.2f;
+		[TabGroup("Progression Settings")][SerializeField] private float _preparationDuration = 2f;
+		[TabGroup("Progression Settings")][SerializeField] private int _installmentValue = 1;
+		[TabGroup("Progression Settings")][SerializeField] private float _installmentInterval = 0.2f;
 
 		private IUnlockable _unlockable;
 		private CountdownTimer _preparationTimer;

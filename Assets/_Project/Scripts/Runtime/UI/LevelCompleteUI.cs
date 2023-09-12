@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using DG.Tweening;
 using KBCore.Refs;
 using MyTools.Utils;
@@ -9,9 +10,9 @@ namespace Project.UI
 	{
 		[Header("References")]
 		[SerializeField, Anywhere] private Transform _buttonTransform;
-		[SerializeField] private float _ScaleTo = 1.1f;
-		[SerializeField] private float _scaleTime = 0.5f;
-		[SerializeField] private Ease _ease = Ease.InOutSine;
+		[ShowIf("@_buttonTransform != null")][SerializeField] private float _ScaleTo = 1.1f;
+		[ShowIf("@_buttonTransform != null")][SerializeField] private float _scaleTime = 0.5f;
+		[ShowIf("@_buttonTransform != null")][SerializeField] private Ease _ease = Ease.InOutSine;
 
 		private Vector3 _startScale;
 		private int _nextSceneIndex;

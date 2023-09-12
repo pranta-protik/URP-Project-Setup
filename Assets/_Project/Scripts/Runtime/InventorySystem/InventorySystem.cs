@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using MyTools.Utils;
 using Project.Managers;
@@ -11,7 +12,7 @@ namespace Project.IS
 	{
 		public event UnityAction OnInventoryUpdated;
 
-		[SerializeField] private InventoryItemDataListSO _inventoryItemDataList;
+		[InlineEditor(InlineEditorObjectFieldModes.Foldout)][SerializeField] private InventoryItemDataListSO _inventoryItemDataList;
 		private Dictionary<InventoryItemDataSO, string> _inventoryItemDataDictionary;
 		private Dictionary<string, InventoryItemDataSO> _inventoryItemDataInverseDictionary;
 		private Dictionary<InventoryItemDataSO, InventoryItem> _inventoryItemsDictionary;

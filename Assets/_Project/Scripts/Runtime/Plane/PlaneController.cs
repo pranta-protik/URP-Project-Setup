@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using Cinemachine;
 using KBCore.Refs;
 using Project.Managers;
@@ -8,18 +9,16 @@ namespace Project
 {
 	public class PlaneController : ValidatedMonoBehaviour
 	{
-		[Header("References")]
-		[SerializeField, Anywhere] private Joystick _joystick;
-		[SerializeField, Anywhere] private CinemachineVirtualCamera _planeVCam;
+		[TabGroup("References")][SerializeField, Anywhere] private Joystick _joystick;
+		[TabGroup("References")][SerializeField, Anywhere] private CinemachineVirtualCamera _planeVCam;
 
-		[Header("Movement Settings")]
-		[SerializeField] private Vector2 _movementLimit = new(2f, 2f);
-		[SerializeField] private float _movementRange = 5f;
-		[SerializeField] private float _movementSpeed = 10f;
-		[SerializeField] private float _maxRoll = 15f;
-		[SerializeField] private float _rollSpeed = 5f;
-		[SerializeField] private float _maxPitch = 10f;
-		[SerializeField] private float _pitchSpeed = 5f;
+		[TabGroup("Movement Settings")][SerializeField] private Vector2 _movementLimit = new(2f, 2f);
+		[TabGroup("Movement Settings")][SerializeField] private float _movementRange = 5f;
+		[TabGroup("Movement Settings")][SerializeField] private float _movementSpeed = 10f;
+		[TabGroup("Movement Settings")][SerializeField] private float _maxRoll = 15f;
+		[TabGroup("Movement Settings")][SerializeField] private float _rollSpeed = 5f;
+		[TabGroup("Movement Settings")][SerializeField] private float _maxPitch = 10f;
+		[TabGroup("Movement Settings")][SerializeField] private float _pitchSpeed = 5f;
 
 		public UnityEvent OnEjected;
 

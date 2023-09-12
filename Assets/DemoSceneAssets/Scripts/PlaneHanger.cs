@@ -1,13 +1,15 @@
+using Sirenix.OdinInspector;
 using DG.Tweening;
 using KBCore.Refs;
 using Project;
 using UnityEngine;
+using Project.Unlockables;
 
 namespace DemoScene
 {
 	public class PlaneHanger : UnlockableItem
 	{
-		[SerializeField, Anywhere] private Transform _rampTransform;
+		[TabGroup("References")][SerializeField, Anywhere] private Transform _rampTransform;
 
 		protected override void Start()
 		{

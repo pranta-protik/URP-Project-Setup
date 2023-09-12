@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using DG.Tweening;
 using KBCore.Refs;
@@ -9,12 +10,12 @@ namespace Project.UI
 		[Header("References")]
 		[SerializeField, Anywhere] private Transform _handTransform;
 		[SerializeField, Anywhere] private Transform _textTransform;
-		[SerializeField] private Vector3 _moveTo = Vector3.zero;
-		[SerializeField] private float _moveTime = 1f;
-		[SerializeField] private Ease _moveEase = Ease.InOutSine;
-		[SerializeField] private float _scaleTo = 1.2f;
-		[SerializeField] private float _scaleTime = 0.5f;
-		[SerializeField] private Ease _scaleEase = Ease.InOutSine;
+		[ShowIf("@_handTransform != null")][SerializeField] private Vector3 _moveTo = Vector3.zero;
+		[ShowIf("@_handTransform != null")][SerializeField] private float _moveTime = 1f;
+		[ShowIf("@_handTransform != null")][SerializeField] private Ease _moveEase = Ease.InOutSine;
+		[ShowIf("@_textTransform != null")][SerializeField] private float _scaleTo = 1.2f;
+		[ShowIf("@_textTransform != null")][SerializeField] private float _scaleTime = 0.5f;
+		[ShowIf("@_textTransform != null")][SerializeField] private Ease _scaleEase = Ease.InOutSine;
 
 		private Vector3 _startPosition;
 		private Vector3 _startScale;

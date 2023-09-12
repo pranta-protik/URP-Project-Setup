@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using KBCore.Refs;
 using MyTools.Utils;
 using Project.Utils;
@@ -8,12 +9,10 @@ namespace Project
 {
 	public class InteractionPlatform : ValidatedMonoBehaviour
 	{
-		[Header("References")]
-		[SerializeField, Anywhere] private GameObject _interactableGO;
-		[SerializeField, Anywhere] private Image _loadingBarFill;
+		[TabGroup("References")][SerializeField, Anywhere] private GameObject _interactableGO;
+		[TabGroup("References")][SerializeField, Anywhere] private Image _loadingBarFill;
 
-		[Header("Porgression Settings")]
-		[SerializeField] private float _preparationDuration = 2f;
+		[TabGroup("Porgression Settings")][SerializeField] private float _preparationDuration = 2f;
 
 		private IInteractable _interactable;
 		private Transform _interactor;

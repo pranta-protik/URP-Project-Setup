@@ -1,7 +1,7 @@
 using MyTools.Utils;
 using UnityEditor;
 
-namespace MyTools.EditorScript
+namespace MyTools.EditorScript.HotKeys
 {
     public static class CloseWindowTab
     {

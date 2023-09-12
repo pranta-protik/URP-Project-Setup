@@ -10,7 +10,6 @@ namespace Project.Managers
 {
 	public class UIManager : Singleton<UIManager>
 	{
-		[Header("References")]
 		[SerializeField] private EventChannelSO levelStartChannel;
 		[SerializeField] private IntEventChannelSO levelCompleteChannel;
 		[SerializeField] private EventChannelSO levelFailChannel;

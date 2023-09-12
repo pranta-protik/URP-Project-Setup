@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using MyTools.Utils;
@@ -11,12 +12,17 @@ namespace Project.Persistent.SaveSystem
 		public static DataPersistenceManager Instance { get; private set; }
 
 		[Header("File Storage Config")]
-		[SerializeField] private string _fileName;
-		[SerializeField] private bool _useEncryption;
+		[SerializeField] private string _fileName = "data.sav";
+		[ShowIf("@_fileName != \"\"")][SerializeField] private bool _useEncryption;
 
 		private GameData _gameData;
 		private List<IDataPersistence> _dataPersistenceObjectsList;
 		private FileDataHandler _fileDataHandler;
+
+		private void OnValidate()
+		{
+			if (_fileName == "") DebugUtils.LogError("Data Persistence Manager requires a valid filename.");
+		}
 
 		private void Awake()
 		{

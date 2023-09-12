@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using Project.Persistent.SaveSystem;
 using UnityEngine;
 using KBCore.Refs;
@@ -5,35 +6,21 @@ using Project.IS;
 using Project.Managers;
 using DG.Tweening;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
-namespace Project
+namespace Project.Unlockables
 {
 	public abstract class UnlockableItem : ValidatedMonoBehaviour, IUnlockable, IInteractable, IDataPersistence
 	{
-		[Header("Id has to be unique")]
-		[SerializeField] private string _id;
+		[TabGroup("References")][SerializeField, Child] private PaymentPlatform _paymentPlatform;
+		[TabGroup("References")][SerializeField, Child] private InteractionPlatform _interactionPlatform;
+		[TabGroup("References")][SerializeField, Anywhere] protected Transform _idlingSpot;
 
-#if UNITY_EDITOR
-		[ContextMenu("Generate GUID for ID")]
-		private void GenerateGUID()
-		{
-			_id = System.Guid.NewGuid().ToString();
-			EditorUtility.SetDirty(gameObject);
-		}
-#endif
+		[TabGroup("Data Settings")][InlineButton("GenerateGUID")][SerializeField, LabelText("Id (Unique)")] private string _id;
 
-		[Header("References")]
-		[SerializeField, Child] private PaymentPlatform _paymentPlatform;
-		[SerializeField, Child] private InteractionPlatform _interactionPlatform;
-		[SerializeField, Anywhere] protected Transform _idlingSpot;
+		private void GenerateGUID() => _id = System.Guid.NewGuid().ToString();
 
-		[Header("Data Settings")]
-		[SerializeField] private InventoryItemDataSO _itemData;
-		[SerializeField] private int _unlockCost = 10;
-		[SerializeField] protected float _scaleTime = 1f;
+		[TabGroup("Data Settings")][InlineEditor(InlineEditorObjectFieldModes.Foldout)][SerializeField] private InventoryItemDataSO _itemData;
+		[TabGroup("Data Settings")][SerializeField] private int _unlockCost = 10;
+		[TabGroup("Data Settings")][SerializeField] protected float _scaleTime = 1f;
 
 		private int _depositedAmount;
 		protected bool _isUnlocked;

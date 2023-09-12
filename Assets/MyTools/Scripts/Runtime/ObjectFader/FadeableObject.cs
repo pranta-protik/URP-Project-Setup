@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MyTools
+namespace MyTools.ObjectFader
 {
 	public class FadeableObject : MonoBehaviour, IEquatable<FadeableObject>
 	{

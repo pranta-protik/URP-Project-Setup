@@ -4,7 +4,6 @@ namespace Project.IS
 {
 	public abstract class InventoryItemObject : MonoBehaviour
 	{
-		[Header("References")]
 		[SerializeField] private InventoryItemDataSO _itemData;
 		public InventoryItemDataSO ItemData => _itemData;
 		public bool IsPickedUp { get; set; }

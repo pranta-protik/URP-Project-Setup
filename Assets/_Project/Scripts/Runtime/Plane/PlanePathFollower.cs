@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -23,8 +24,8 @@ namespace Project
 		[SerializeField, Anywhere] private SplineContainer _spline;
 
 		[Header("Follow Settings")]
-		[SerializeField] private LoopMode _loopMode = LoopMode.Once;
-		[SerializeField] private float _speed = 10f;
+		[ShowIf("@_spline != null")][EnumToggleButtons][SerializeField] private LoopMode _loopMode = LoopMode.Once;
+		[ShowIf("@_spline != null")][SerializeField] private float _speed = 10f;
 
 		private float _distanceTravelled;
 		private float _splineLength;

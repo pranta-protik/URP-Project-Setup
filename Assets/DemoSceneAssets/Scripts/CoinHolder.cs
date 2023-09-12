@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using MyTools.Utils;
@@ -5,30 +6,18 @@ using Project.Managers;
 using Project.Persistent.SaveSystem;
 using UnityEngine;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 namespace DemoScene
 {
 	public class CoinHolder : MonoBehaviour, IDataPersistence
 	{
-		[Header("All collectable coins must be added\nas a child of this gameobject."), Space]
+		[Header("All collectable coins must be added")]
+		[Header("as a child of this gameobject")]
 		[SerializeField] private List<CollectableCoin> _collectableCoinsList;
 
-#if UNITY_EDITOR
-		[ContextMenu("Find Collectable Coins")]
-		private void FindCollectableCoins()
-		{
-			_collectableCoinsList = GetComponentsInChildren<CollectableCoin>().ToList();
-			EditorUtility.SetDirty(gameObject);
-		}
-#endif
+		[Button, PropertySpace]
+		private void FindAllCollectableCoins() => _collectableCoinsList = GetComponentsInChildren<CollectableCoin>().ToList();
 
-		public List<CollectableCoin> GetCollectableCoinsList()
-		{
-			return _collectableCoinsList;
-		}
+		public List<CollectableCoin> GetCollectableCoinsList() => _collectableCoinsList;
 
 		public void LoadData(GameData gameData)
 		{

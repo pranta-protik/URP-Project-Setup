@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Cinemachine;
 using KBCore.Refs;
@@ -15,36 +16,31 @@ namespace Project
 
 		private static readonly int _Speed = Animator.StringToHash("Speed");
 
-		[Header("References")]
-		[SerializeField, Self] private Rigidbody _rigidbody;
-		[SerializeField, Self] private CapsuleCollider _capsuleCollider;
-		[SerializeField, Child] private Animator _animator;
-		[SerializeField, Self] private GroundChecker _groundChecker;
-		[SerializeField, Self] private CeilingChecker _ceilingChecker;
-		[SerializeField, Anywhere] private Joystick _joystick;
-		[SerializeField, Anywhere] private CinemachineVirtualCamera _playerVCam;
+		[TabGroup("References")][SerializeField, Self] private Rigidbody _rigidbody;
+		[TabGroup("References")][SerializeField, Self] private CapsuleCollider _capsuleCollider;
+		[TabGroup("References")][SerializeField, Child] private Animator _animator;
+		[TabGroup("References")][SerializeField, Self] private GroundChecker _groundChecker;
+		[TabGroup("References")][SerializeField, Self] private CeilingChecker _ceilingChecker;
+		[TabGroup("References")][SerializeField, Anywhere] private Joystick _joystick;
+		[TabGroup("References")][SerializeField, Anywhere] private CinemachineVirtualCamera _playerVCam;
 
-		[Header("Movement Settings")]
-		[SerializeField] private float _moveSpeed = 300f;
-		[SerializeField] private float _rotationSpeed = 300f;
-		[SerializeField] private float _stoppingSpeed = 3f;
-		[SerializeField] private float _smoothTime = 0.2f;
+		[TabGroup("Movement Settings")][SerializeField] private float _moveSpeed = 300f;
+		[TabGroup("Movement Settings")][SerializeField] private float _rotationSpeed = 300f;
+		[TabGroup("Movement Settings")][SerializeField] private float _stoppingSpeed = 3f;
+		[TabGroup("Movement Settings")][SerializeField] private float _smoothTime = 0.2f;
 
-		[Header("Jump Settings")]
-		[SerializeField] private float _jumpForce = 10f;
-		[SerializeField] private float _jumpDuration = 0.5f;
-		[SerializeField] private float _gravityMultiplier = 3f;
+		[TabGroup("Jump Settings")][SerializeField] private float _jumpForce = 10f;
+		[TabGroup("Jump Settings")][SerializeField] private float _jumpDuration = 0.5f;
+		[TabGroup("Jump Settings")][SerializeField] private float _gravityMultiplier = 3f;
 
-		[Header("Dash Settings")]
-		[SerializeField] private float _dashForce = 10f;
-		[SerializeField] private float _dashDuration = 0.5f;
-		[SerializeField] private float _dashColliderHeight = 1f;
-		[SerializeField] private Vector3 _dashColliderCenter = new(0f, 0.47f, 0f);
+		[TabGroup("Dash Settings")][SerializeField] private float _dashForce = 10f;
+		[TabGroup("Dash Settings")][SerializeField] private float _dashDuration = 0.5f;
+		[TabGroup("Dash Settings")][SerializeField] private float _dashColliderHeight = 1f;
+		[TabGroup("Dash Settings")][SerializeField] private Vector3 _dashColliderCenter = new(0f, 0.47f, 0f);
 
-		[Header("Crouch Settings")]
-		[SerializeField] private float _crouchDecelaration = 0.5f;
-		[SerializeField] private float _crouchColliderHeight = 1f;
-		[SerializeField] private Vector3 _crouchColliderCenter = new(0f, 0.47f, 0f);
+		[TabGroup("Crouch Settings")][SerializeField] private float _crouchDecelaration = 0.5f;
+		[TabGroup("Crouch Settings")][SerializeField] private float _crouchColliderHeight = 1f;
+		[TabGroup("Crouch Settings")][SerializeField] private Vector3 _crouchColliderCenter = new(0f, 0.47f, 0f);
 
 		private float _currentSpeed;
 		private float _velocity;

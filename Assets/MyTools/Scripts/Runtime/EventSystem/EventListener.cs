@@ -1,3 +1,4 @@
+using MyTools.Utils;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,17 +6,22 @@ namespace MyTools.ES
 {
 	public abstract class EventListener<T> : MonoBehaviour
 	{
-		[SerializeField] private EventChannelSO<T> eventChannel;
+		[SerializeField] private EventChannelSO<T> _eventChannel;
 		[SerializeField] private UnityEvent<T> _unityEvent;
+
+		private void OnValidate()
+		{
+			if (_eventChannel == null) DebugUtils.LogError("Event channel missing.");
+		}
 
 		protected void Awake()
 		{
-			eventChannel.Register(this);
+			_eventChannel.Register(this);
 		}
 
 		private void OnDestroy()
 		{
-			eventChannel.Unregister(this);
+			_eventChannel.Unregister(this);
 		}
 
 		public void Raise(T value)

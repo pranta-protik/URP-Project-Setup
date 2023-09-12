@@ -4,6 +4,7 @@ using UnityEditor.SceneManagement;
 using UnityEditor;
 using System.IO;
 using MyTools.Settings;
+using MyTools.EditorScript.HotKeys;
 
 namespace MyTools.EditorScript
 {

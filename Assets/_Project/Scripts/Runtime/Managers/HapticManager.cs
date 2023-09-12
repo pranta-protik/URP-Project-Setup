@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using DemoScene;
 using MyTools.Utils;
 using UnityEngine;
@@ -6,9 +7,15 @@ namespace Project.Managers
 {
 	public class HapticManager : MonoBehaviour
 	{
-		[SerializeField] private bool _enableLog = true;
+		private enum LogState
+		{
+			Enable,
+			Disable
+		}
 
-		private void Awake() => HapticUtils.SetLogStatus(_enableLog);
+		[EnumToggleButtons, Title("Log Status"), HideLabel][SerializeField] private LogState _logState = LogState.Enable;
+
+		private void Awake() => HapticUtils.SetLogStatus(_logState == LogState.Enable);
 
 		private void Start()
 		{
