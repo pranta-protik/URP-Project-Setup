@@ -1,4 +1,4 @@
-namespace Project
+namespace Project.Unlockables
 {
 	public interface IUnlockable
 	{

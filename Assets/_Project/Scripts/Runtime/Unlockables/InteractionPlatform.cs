@@ -5,7 +5,7 @@ using Project.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project
+namespace Project.Unlockables
 {
 	public class InteractionPlatform : ValidatedMonoBehaviour
 	{

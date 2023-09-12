@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Project
+namespace Project.Unlockables
 {
 	public interface IInteractable
 	{

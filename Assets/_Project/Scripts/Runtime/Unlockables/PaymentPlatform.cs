@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project
+namespace Project.Unlockables
 {
 	public class PaymentPlatform : ValidatedMonoBehaviour
 	{
