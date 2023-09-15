@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 
 namespace Project.IS
 {
@@ -6,7 +7,7 @@ namespace Project.IS
 	public class InventoryItem
 	{
 		public InventoryItemDataSO ItemData { get; private set; }
-		public int StackSize { get; private set; }
+		[ShowInInspector, DisplayAsString] public int StackSize { get; private set; }
 
 		public InventoryItem(InventoryItemDataSO itemData)
 		{

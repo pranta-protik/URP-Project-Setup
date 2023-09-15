@@ -3,14 +3,24 @@ using UnityEngine;
 
 namespace Project.IS
 {
-	[InlineEditor(InlineEditorObjectFieldModes.Foldout)]
 	[CreateAssetMenu(fileName = "InventoryItemData", menuName = "ScriptableObjects/InventorySystem/InventoryItemData")]
 	public class InventoryItemDataSO : ScriptableObject
 	{
-		[PreviewField] public Sprite icon;
+		[PreviewField(60), HideLabel]
+		[HorizontalGroup("InventoryItemData", 60)]
+		public Sprite icon;
+
+		[HorizontalGroup("InventoryItemData", MarginLeft = 10)]
+		[VerticalGroup("InventoryItemData/Right"), LabelWidth(120)]
 		public GameObject prefab;
+
+		[VerticalGroup("InventoryItemData/Right"), LabelWidth(120)]
 		public string id;
+
+		[VerticalGroup("InventoryItemData/Right"), LabelWidth(120)]
 		public string displayName;
+
+		[VerticalGroup("InventoryItemData/Right"), LabelWidth(120)]
 		public int value;
 	}
 }

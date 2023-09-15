@@ -1,10 +1,11 @@
-using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using MyTools.Utils;
 using Project.Managers;
 using Project.Persistent.SaveSystem;
 using UnityEngine;
 using UnityEngine.Events;
+using KBCore.Refs;
+using Sirenix.OdinInspector;
 
 namespace Project.IS
 {
@@ -12,12 +13,18 @@ namespace Project.IS
 	{
 		public event UnityAction OnInventoryUpdated;
 
-		[InlineEditor(InlineEditorObjectFieldModes.Foldout)][SerializeField] private InventoryItemDataListSO _inventoryItemDataList;
+		[SerializeField, Anywhere] private InventoryItemDataListSO _inventoryItemDataList;
 		private Dictionary<InventoryItemDataSO, string> _inventoryItemDataDictionary;
 		private Dictionary<string, InventoryItemDataSO> _inventoryItemDataInverseDictionary;
-		private Dictionary<InventoryItemDataSO, InventoryItem> _inventoryItemsDictionary;
+		[ShowInInspector] private Dictionary<InventoryItemDataSO, InventoryItem> _inventoryItemsDictionary;
 		public List<InventoryItem> InventoryItemsList { get; private set; }
 
+#if UNITY_EDITOR
+		private void OnValidate()
+		{
+			this.ValidateRefs();
+		}
+#endif
 		protected override void OnAwake()
 		{
 			base.OnAwake();

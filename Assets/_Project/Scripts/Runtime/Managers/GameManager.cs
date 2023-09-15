@@ -1,6 +1,7 @@
 using MyTools.Utils;
 using Project.Persistent;
 using Project.Persistent.SaveSystem;
+using Sirenix.OdinInspector;
 using UnityEngine.Events;
 
 namespace Project.Managers
@@ -19,7 +20,7 @@ namespace Project.Managers
 		public event UnityAction<int> OnLevelCompleted;
 		public event UnityAction OnLevelFailed;
 
-		public GameState CurrentGameState { get; private set; }
+		[ShowInInspector, DisplayAsString] public GameState CurrentGameState { get; private set; }
 
 		protected override void OnAwake()
 		{

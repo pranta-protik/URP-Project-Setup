@@ -1,10 +1,11 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Project.IS
 {
 	public abstract class InventoryItemObject : MonoBehaviour
 	{
-		[SerializeField] private InventoryItemDataSO _itemData;
+		[InlineEditor][SerializeField] private InventoryItemDataSO _itemData;
 		public InventoryItemDataSO ItemData => _itemData;
 		public bool IsPickedUp { get; set; }
 
